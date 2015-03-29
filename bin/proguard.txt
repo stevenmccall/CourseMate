@@ -1,0 +1,12 @@
+# view AndroidManifest.xml #generated:19
+-keep class com.txstatecs4398.coursemate.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:10
+-keep class com.txstatecs4398.coursemate.Take5HttpClient { <init>(...); }
+
+# view AndroidManifest.xml #generated:13
+-keep class com.txstatecs4398.coursemate.WebViewActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:16
+-keep class com.txstatecs4398.coursemate.WebViewActivity2 { <init>(...); }
+
