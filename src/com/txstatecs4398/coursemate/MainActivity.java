@@ -12,8 +12,7 @@ public class MainActivity extends Activity
 {
     private TextView text1;
     private Button button;
-    //public String StreamTemp;
-    /** Called when the activity is first created. */
+    
     @Override
     public void onCreate(Bundle savedInstanceState)
     {        
@@ -30,13 +29,9 @@ public class MainActivity extends Activity
         text1 = (TextView) findViewById(R.id.text1); 
         text1.setText("Press the button below:");
         
-        text1.append(HTMLStream);
-        
-        //----------switching activity----------------
-       
+        text1.append(HTMLStream);       
  
-	button = (Button) findViewById(R.id.buttonUrl);
- 
+	button = (Button) findViewById(R.id.buttonUrl); 
 	button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) 
@@ -45,8 +40,6 @@ public class MainActivity extends Activity
                     //intent.putExtra("HTMLStream", StreamTemp);  used to pass data
                     startActivity(intent);
                 }
-        });	
-        
-    }
-    
+        });	        
+    }    
 }
