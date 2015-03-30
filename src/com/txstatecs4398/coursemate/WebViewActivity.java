@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.txstatecs4398.coursemate;
 
 import android.app.Activity;
@@ -18,37 +13,49 @@ import java.util.logging.Logger;
 public class WebViewActivity extends Activity {
 
     private WebView webView;
-
-    /**
-     * Called when the activity is first created.
-     */
+    public boolean done = false;
+    //public boolean doneTrail = false;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.webview);
-
+        webView = (WebView) findViewById(R.id.webView1);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setUserAgentString("Mozilla/5.0 (Linux; U; Android 4.0.4; en-gb; GT-I9100 Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
+        
         // intercept calls to console.log
         webView.setWebChromeClient(new WebChromeClient() {
+
             @Override
             public boolean onConsoleMessage(ConsoleMessage cmsg) {
-                // check secret prefix
-                if (cmsg.message().startsWith("MAGIC")) 
+                if (cmsg.message().startsWith("MAGIC") && done) 
                 {
-                    passStream(cmsg.message().substring(5));
-                    return true;
+                    passStream("DONE DONE DONE"+cmsg.message().substring(5));
+                    //return true;
                 }
-                return false;
+                return true;
             }
-        });
-
-        webView.setWebViewClient(new WebViewClient() {
             @Override
-            public void onPageFinished(WebView view, String address) {
-                // have the page spill its guts, with a secret prefix
-                view.loadUrl("javascript:console.log('MAGIC'+document.getElementsByTagName('html')[0].innerHTML);");
+            public void onProgressChanged(WebView view, int newProgress)
+            {
+                if(newProgress == 100) //passStream("reaches 100");
+                    view.loadUrl("javascript:console.log('MAGIC'+document.getElementsByTagName('html')[0].innerHTML);");
             }
         });
-
+        webView.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                //if(done)doneTrail = true;
+                if (url.contains("https://ssb.txstate.edu/prod/twbkwbis.P_GenMenu?name=bmenu.P_MainMnu&msg=WELCOME"))
+                {
+                    done = true;
+                    url = "https://ssb.txstate.edu/prod/bwskfshd.P_CrseSchd";
+                    view.loadUrl(url);
+                } else {
+                    view.loadUrl(url);
+                }
+                return true;
+            }});
         webView.loadUrl("https://ssb.txstate.edu/prod/twbkwbis.P_ValLogin");
     }
 
