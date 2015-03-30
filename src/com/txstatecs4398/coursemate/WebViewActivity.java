@@ -6,30 +6,25 @@
 package com.txstatecs4398.coursemate;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import java.util.ArrayList;
-import java.util.List;
-import org.apache.http.HttpEntity;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.http.HttpVersion;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
-import org.apache.http.util.EntityUtils;
 
 public class WebViewActivity extends Activity {
 
@@ -48,13 +43,11 @@ public class WebViewActivity extends Activity {
         webView.setWebChromeClient(new WebChromeClient() {
             public boolean onConsoleMessage(ConsoleMessage cmsg) {
                 // check secret prefix
-                if (cmsg.message().startsWith("MAGIC")) {
-                    String msg = cmsg.message().substring(5); // strip off prefix
-
-                    /* process HTML */
+                if (cmsg.message().startsWith("MAGIC")) 
+                {
+                    passStream(cmsg.message().substring(5));
                     return true;
                 }
-
                 return false;
             }
         });
@@ -69,23 +62,15 @@ public class WebViewActivity extends Activity {
         webView.loadUrl("https://ssb.txstate.edu/prod/twbkwbis.P_ValLogin");
     }
 
-    private static String getPageM1() {
-        DefaultHttpClient testClient = (DefaultHttpClient) getHttpClient();
-        HttpPost post = new HttpPost("https://ssb.txstate.edu/prod/twbkwbis.P_ValLogin");
+    public void passStream(String HTMLStream) {
+        webView.loadUrl("javascript:window.HtmlViewer.showHTML"
+                + "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');");
 
-        try {
-            List<NameValuePair> pairs = new ArrayList<NameValuePair>(2);
-            pairs.add(new BasicNameValuePair("sid", "sm1712"));
-            pairs.add(new BasicNameValuePair("PIN", "password"));
-            post.setEntity(new UrlEncodedFormEntity(pairs));
-
-            HttpEntity entity = testClient.execute(post).getEntity();
-            String responseString = EntityUtils.toString(entity, "UTF-8");
-
-            return responseString;
-        } catch (Exception e) {
-            return "getPageM1 Failed: " + e.toString();
-        }
+        Logger.getLogger(WebViewActivity2.class.getName()).log(Level.SEVERE, null);
+       
+        Intent intent = new Intent(WebViewActivity.this, MainActivity.class);
+        intent.putExtra("HTMLStream", HTMLStream);  //used to pass data
+        startActivity(intent);
     }
 
     private static HttpClient getHttpClient() {
