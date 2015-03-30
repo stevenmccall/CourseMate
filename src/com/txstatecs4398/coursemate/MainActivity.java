@@ -3,6 +3,7 @@ package com.txstatecs4398.coursemate;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -24,22 +25,20 @@ public class MainActivity extends Activity
         if (extras != null) {
             HTMLStream = extras.getString("HTMLStream");
         }
-            
-        //---text view
-        text1 = (TextView) findViewById(R.id.text1); 
-        text1.setText("Press the button below:");
         
-        text1.append(HTMLStream);       
+        text1 = (TextView) findViewById(R.id.text1); 
+        text1.setMovementMethod(new ScrollingMovementMethod());
+        text1.setText("Press the button below:");
+        text1.append(HTMLStream);
  
-	button = (Button) findViewById(R.id.buttonUrl); 
+	button = (Button) findViewById(R.id.buttonUrl);
 	button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) 
                 { 
-                    Intent intent = new Intent(MainActivity.this, WebViewActivity2.class);
-                    //intent.putExtra("HTMLStream", StreamTemp);  used to pass data
+                    Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
                     startActivity(intent);
                 }
-        });	        
-    }    
+        });	
+    }
 }

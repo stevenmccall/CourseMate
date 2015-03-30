@@ -14,9 +14,9 @@ public class WebViewActivity extends Activity {
 
     private WebView webView;
     public boolean done = false;
-    String username = "username";
+    String username = "sm1712";
     String password = "password";
-    //public boolean doneTrail = false;
+    public boolean doneTrail = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,12 +42,12 @@ public class WebViewActivity extends Activity {
             public void onProgressChanged(WebView view, int newProgress) {
                 if (newProgress == 100 && done) {
                     view.loadUrl("javascript:console.log('MAGIC'+document.getElementsByTagName('html')[0].innerHTML);");
-                } else if (newProgress == 100 && !done) {
-                    view.loadUrl("javascript: {"
-                            + "document.getElementById('UserID').value = '" + username + "';"
-                            + "document.getElementById('PIN').value = '" + password + "';"
-                            + "var frms = document.getElementsByName('Login');"
-                            + "frms[0].submit(); };");
+                } else if (newProgress == 100 && !doneTrail) {
+                    doneTrail = true;
+                    view.loadUrl("javascript:document.getElementById('UserID').value = '" + username + "';");
+                            /* + "var frms = document.getElementById('PIN').value = '" + password + "';" *///+ "};");
+                            //+ "var frms = document.getElementsByName('loginform');"
+                            //+ "frms[0].submit(); };");
                 }
 
             }
@@ -60,7 +60,11 @@ public class WebViewActivity extends Activity {
                     done = true;
                     url = "https://ssb.txstate.edu/prod/bwskfshd.P_CrseSchd";
                     view.loadUrl(url);
-                } else {
+                } 
+                else if(url.contains("https://ssb.txstate.edu/prod/twbkwbis.P_ValLogin") && !doneTrail){
+                    view.loadUrl(url);
+                }
+                else {
                     view.loadUrl(url);
                 }
                 return true;
