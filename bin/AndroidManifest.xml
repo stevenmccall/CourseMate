@@ -8,13 +8,7 @@
     
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
         <activity
-            android:name=".Take5HttpClient"
-            android:theme="@android:style/Theme.NoTitleBar" />
-        <activity
             android:name=".WebViewActivity"
-            android:theme="@android:style/Theme.NoTitleBar" />
-        <activity
-            android:name=".WebViewActivity2"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity android:name="MainActivity"
                   android:label="@string/app_name">

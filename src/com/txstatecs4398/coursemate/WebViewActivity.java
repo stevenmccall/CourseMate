@@ -49,7 +49,6 @@ public class WebViewActivity extends Activity {
                             //+ "var frms = document.getElementsByName('loginform');"
                             //+ "frms[0].submit(); };");
                 }
-
             }
         });
         webView.setWebViewClient(new WebViewClient() {
@@ -77,7 +76,7 @@ public class WebViewActivity extends Activity {
         webView.loadUrl("javascript:window.HtmlViewer.showHTML"
                 + "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');");
 
-        Logger.getLogger(WebViewActivity2.class.getName()).log(Level.SEVERE, null);
+        Logger.getLogger(WebViewActivity.class.getName()).log(Level.SEVERE, null);
 
         Intent intent = new Intent(WebViewActivity.this, MainActivity.class);
         intent.putExtra("HTMLStream", HTMLStream);  //used to pass data
