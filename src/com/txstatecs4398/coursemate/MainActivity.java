@@ -1,9 +1,12 @@
 package com.txstatecs4398.coursemate;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -30,8 +33,8 @@ public class MainActivity extends Activity
         if (extras != null) 
         {
             HTMLStream = extras.getString("HTMLStream");
-            MeetingShared test = new MeetingShared();
-            
+            Log.i("MainActivity", "Before MeetingShared");//logcat
+            MeetingShared test = new MeetingShared(HTMLStream); 
         }
         
         user1 = (EditText) findViewById(R.id.username1);

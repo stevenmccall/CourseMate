@@ -16,7 +16,7 @@ public class ParseBuff {
 	static BufferedInputStream f = null;
 	static String strbuf;
 	static int lastIndex, lastIndex2 = 0;
-	static ArrayList<String> classSched = new ArrayList<String>();
+	static ArrayList<String> classSched = new ArrayList<>();
 	static String findstr = "pm";
 	static String start= null, finish = null, day = null;
 	static int startime, endtime;
@@ -24,74 +24,40 @@ public class ParseBuff {
     //------------------------------------------------------------------------------ hk added   
         protected static MeetingShared dealership;
     
-        public ParseBuff(MeetingShared d){
+        public ParseBuff(MeetingShared d, String HTMLStream){
             System.out.println("inside ParseBuff constructor");
             ParseBuff.dealership = d;
             //dealership.getGrpCal().addNewSched("hk1066");
             dealership.GrpCal.addNewSched("hk1066");//temp fix(netID will come from login)------------------------
-            main();//this is temp untill steven adds his athetication program+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            parse(HTMLStream);//this is temp untill steven adds his athetication program+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         }
     //----------------------------------------------------------------------------- hk added end    
-	public static void main() throws NullPointerException {
-                System.out.println("inside ParseBuff main1");//-----------------------------------------------------------
+	public void parse(String HTMLStream) throws NullPointerException {
+                System.out.println("inside ParseBuff main1");
 		int pmcount, colcount = 0;
-		//
-		// TODO Auto-generated method stub
-		// Read into string from schedule.txt
-		//
-		try{
-			//System.out.println("makeing ScheduleText.txt");
-			//PrintWriter writer = new PrintWriter("ScheduleText.txt");
-                        //writer.println("hellow world");
-                        //writer.close();
-                        
-                        f = new BufferedInputStream(new FileInputStream("ScheduleText.txt"));//inside C:\Documents and Settings\Harrison\My Documents\NetBeansProjects\VehicleDealership\src\vehicledealership
-			//System.out.println("inside ParseBuff main1: strbuff" + f);//-----------------------
-                        f.read(buffer);
-			strbuf = new String(buffer);
-                        //System.out.println("inside ParseBuff main1: strbuff" + strbuf);//-----------------------
-			try{
-				f.close();
-			}catch (IOException ignored){
-				
-			}
-		}catch (IOException ignored){
-			System.out.println("File not found.");
-		}
-                System.out.println("inside ParseBuff main2");//-----------------------------------------------------
-// find netID add IndividualSchedule(String netID) via addNewSched(String netID) HERE
-                //
-		//search string for times... which are when in class
-		//am</TD> pm</TD>
-		while(lastIndex != -1 || lastIndex2 != -1){
-                    System.out.println("inside ParseBuff main3");//-------------------------------------------------
-                    //System.out.println("inside ParseBuff main3: strbuf = " + strbuf);//-------------------------------------------------                    
+
+                strbuf = HTMLStream;
+
+		while(lastIndex != -1 || lastIndex2 != -1){                  
 			lastIndex = strbuf.indexOf("am</TD>", lastIndex);
 			lastIndex2 = strbuf.indexOf("pm</TD>", lastIndex2);
-                        System.out.println("inside ParseBuff main3: lastIndex = " + lastIndex);//-------------------------------------------------
-                        System.out.println("inside ParseBuff main3: lastIndex2 = " + lastIndex2);//-------------------------------------------------
+                        
 			if (lastIndex != -1){
-                                System.out.println("inside ParseBuff main3: if found1");//-------------------------------------------------
 				int temp = lastIndex - 17;
 				String times = strbuf.substring(temp, lastIndex+38);
-				//System.out.println(times);
 				classSched.add(times);
 				lastIndex += 7;
 			}else if(lastIndex2 != -1){
-                                System.out.println("inside ParseBuff main3: if found2");//-------------------------------------------------
 				int temp = lastIndex2 - 17;
 				String times = strbuf.substring(temp, lastIndex2+38);
-				//System.out.println(times);
 				classSched.add(times);
 				lastIndex2 += 7;
 			}
 		}
-                System.out.println("inside ParseBuff main4");//-------------------------------------------------
 		String findstr = "pm";
 		String start= null, finish = null, day = null;
 		
 		for(String s: classSched){
-                    //System.out.println("inside ParseBuff main5: " + s);//--------------------------
 			lastIndex = 0;
 			pmcount = 0;
 			while(lastIndex != -1){
@@ -181,13 +147,10 @@ public class ParseBuff {
 				}
 				endtime += 1200;
 			}
-			System.out.println(startime);
-			System.out.println(endtime + "   ");
 			
  //before this loop is entered netID must be found and the constructor {IndividualSchedule(String netID)} via addNewSched(String netID) must be called
                         tt = new Time(day, startime, endtime, "null");
 			dealership.GrpCal.IndSched.addTime(tt);//-------------------------hk changed
-			System.out.println("inside ParseBuff main6");//-------------------------------------------------
 		}
 	}
 }

@@ -17,12 +17,11 @@ public class MeetingShared {
     public UserConsole UseCon;
     public ParseBuff parse;
     
-    public MeetingShared() {
+    public MeetingShared(String HTMLStream) {
         System.out.println("inside SharedMeeting constructor");
         //IndSched = new IndividualSchedule("");//?
         GrpCal = new GroupCalendar();
-        parse = new ParseBuff(this);
-        UseCon = new UserConsole(this);
+        parse = new ParseBuff(this, HTMLStream);
     }
     
     // public IndividualSchedule getIndSched() {
@@ -30,15 +29,6 @@ public class MeetingShared {
     //}
     public GroupCalendar getGrpCal() {
         return GrpCal;
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        System.out.println("inside main");
-        MeetingShared d = new MeetingShared();
-
     }
 }
 
