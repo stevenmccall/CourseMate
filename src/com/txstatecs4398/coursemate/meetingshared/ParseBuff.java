@@ -49,8 +49,8 @@ public class ParseBuff {
 			step = strbuf.substring(foundIndex);
 		}
 		while(lastIndex != -1 || lastIndex2 != -1){
-			lastIndex = step.indexOf("<TR>", lastIndex);
-			lastIndex2 = step.indexOf("</TR>", lastIndex2);
+			lastIndex = step.indexOf("<tr>", lastIndex);
+			lastIndex2 = step.indexOf("</tr>", lastIndex2);
 			if (lastIndex != -1 && lastIndex2 != -1){
 				String times = step.substring(lastIndex, lastIndex2+ 5);
 				classSched.add(times);
@@ -72,8 +72,8 @@ public class ParseBuff {
 			count = 0;
 			day = null;
 			while(lastIndex != -1 || lastIndex2 != -1){
-				lastIndex = s.indexOf("<TD", lastIndex);
-				lastIndex2 = s.indexOf("</TD>", lastIndex2);
+				lastIndex = s.indexOf("<td", lastIndex);
+				lastIndex2 = s.indexOf("</td>", lastIndex2);
 				if (lastIndex != -1 && lastIndex2 != -1){
 					count ++;
 					timestep = s.substring(lastIndex, lastIndex2+ 5);
