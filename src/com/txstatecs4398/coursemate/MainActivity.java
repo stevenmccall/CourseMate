@@ -10,7 +10,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-//import com.txstatecs4398.coursemate.meetingshared.MeetingShared;
+import com.txstatecs4398.coursemate.meetingshared.MeetingShared;
 
 public class MainActivity extends Activity
 {
@@ -30,7 +30,7 @@ public class MainActivity extends Activity
         if (extras != null) 
         {
             HTMLStream = extras.getString("HTMLStream");
-            //MeetingShared test = new MeetingShared();
+            MeetingShared test = new MeetingShared();
             
         }
         
@@ -45,9 +45,12 @@ public class MainActivity extends Activity
             @Override
             public void onClick(View arg0) 
                 { 
-                    Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
-                    intent.putExtra("username", user1.getText().toString());  //used to pass data
-                    startActivity(intent);
+                    if(!user1.getText().toString().isEmpty())
+                    {
+                        Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
+                        intent.putExtra("username", user1.getText().toString());  //used to pass data
+                        startActivity(intent);
+                    }
                 }
         });
     }

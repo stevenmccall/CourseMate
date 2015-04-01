@@ -1,6 +1,7 @@
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\CourseMate.ap_ \
  : C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\blue_button.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\ic_launcher.png \
+C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\rounded_edittext.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-ldpi\ic_launcher.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-mdpi\ic_launcher.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-xhdpi\ic_launcher.png \
