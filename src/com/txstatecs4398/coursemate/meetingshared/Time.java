@@ -14,8 +14,6 @@ public class Time {
     int startTime;
     int endTime;
     String event;
-    
-    //constructor
 
     /**
      *
@@ -70,10 +68,8 @@ public class Time {
 
     @Override
     public String toString() {
-        return "NULL";// "Truck{" + "vin=" + vin + ", make=" + make + ", model=" + model +
-              //  ", year=" + year + ", mileage=" + mileage + ", price=" + price +
-              //  ", maximumLoadWeight=" + maxLoadWeight + 
-              //  ", length=" + length + '}';
+        return "Day: "+day+" Start: "+Integer.toString(startTime)+" End: "
+                +Integer.toString(endTime);
     }
 }
 

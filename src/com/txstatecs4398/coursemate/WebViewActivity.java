@@ -85,6 +85,7 @@ public class WebViewActivity extends Activity {
 
         Intent intent = new Intent(WebViewActivity.this, MainActivity.class);
         intent.putExtra("HTMLStream", HTMLStream);  //used to pass data
+        intent.putExtra("netID", username);  //used to pass data
         startActivity(intent);
     }	
 }

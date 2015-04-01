@@ -2,12 +2,9 @@ C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes.dex : \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\BuildConfig.class \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\MainActivity$1.class \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\MainActivity.class \
-C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\meetingshared\GroupCalendar.class \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\meetingshared\IndividualSchedule.class \
-C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\meetingshared\MeetingShared.class \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\meetingshared\ParseBuff.class \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\meetingshared\Time.class \
-C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\meetingshared\UserConsole.class \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\R$attr.class \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\R$drawable.class \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\R$id.class \

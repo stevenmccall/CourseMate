@@ -13,13 +13,15 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.txstatecs4398.coursemate.meetingshared.MeetingShared;
+import com.txstatecs4398.coursemate.meetingshared.IndividualSchedule;
+import com.txstatecs4398.coursemate.meetingshared.ParseBuff;
 
 public class MainActivity extends Activity
 {
     private TextView text1;
     private EditText user1;
     private Button button;
+    private IndividualSchedule person;
     
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -28,20 +30,22 @@ public class MainActivity extends Activity
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
         String HTMLStream="";
+        String netID = "";
         Bundle extras = getIntent().getExtras();
-        
-        if (extras != null) 
-        {
-            HTMLStream = extras.getString("HTMLStream");
-            Log.i("MainActivity", "Before MeetingShared");//logcat
-            MeetingShared test = new MeetingShared(HTMLStream); 
-        }
         
         user1 = (EditText) findViewById(R.id.username1);
         text1 = (TextView) findViewById(R.id.text2); 
         text1.setMovementMethod(new ScrollingMovementMethod());
         text1.setText("HTMLStream:");
-        text1.append(HTMLStream);
+        
+        if (extras != null) 
+        {
+            HTMLStream = extras.getString("HTMLStream");
+            netID = extras.getString("netID");
+            ParseBuff test = new ParseBuff(netID); 
+            person = test.parse(HTMLStream);
+            text1.append(person.showSched());
+        }
  
 	button = (Button) findViewById(R.id.buttonUrl);
 	button.setOnClickListener(new OnClickListener() {
