@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
-    <EditText
-        android:id="@+id/username1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:inputType="text"
-        android:scrollHorizontally="true"
-    />
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:paddingTop="10sp"
+              android:orientation="vertical" >
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="Username:" 
+            android:paddingRight="10sp"
+        />
+        <EditText
+            android:id="@+id/username1"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:inputType="text"
+            android:scrollHorizontally="true"
+        />
+    </LinearLayout>
+    
     <Button
+        android:background="@drawable/blue_button"
         android:id="@+id/buttonUrl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Post Login" 
-    />
+        android:layout_gravity="right"
+        android:text="Retrieve Schedule" 
+        style="@style/button_text" />
+
     <TextView
-        android:id="@+id/text1"
+        android:id="@+id/text2"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1.0"/>
-    
- 
+        android:layout_height="0dip"
+        android:layout_weight="1.0"
+    />
 </LinearLayout>

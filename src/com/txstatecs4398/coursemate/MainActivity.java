@@ -6,10 +6,11 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.txstatecs4398.coursemate.meetingshared.MeetingShared;
+//import com.txstatecs4398.coursemate.meetingshared.MeetingShared;
 
 public class MainActivity extends Activity
 {
@@ -21,6 +22,7 @@ public class MainActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {        
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
         String HTMLStream="";
         Bundle extras = getIntent().getExtras();
@@ -28,12 +30,12 @@ public class MainActivity extends Activity
         if (extras != null) 
         {
             HTMLStream = extras.getString("HTMLStream");
-            MeetingShared test = new MeetingShared();
+            //MeetingShared test = new MeetingShared();
             
         }
         
         user1 = (EditText) findViewById(R.id.username1);
-        text1 = (TextView) findViewById(R.id.text1); 
+        text1 = (TextView) findViewById(R.id.text2); 
         text1.setMovementMethod(new ScrollingMovementMethod());
         text1.setText("HTMLStream:");
         text1.append(HTMLStream);
@@ -48,7 +50,5 @@ public class MainActivity extends Activity
                     startActivity(intent);
                 }
         });
-        
-        
     }
 }
