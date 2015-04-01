@@ -3,6 +3,14 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
+    <EditText
+        android:id="@+id/username1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:inputType="text"
+        android:scrollHorizontally="true"
+    />
     <Button
         android:id="@+id/buttonUrl"
         android:layout_width="wrap_content"
