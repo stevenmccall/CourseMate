@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.txstatecs4398.coursemate.meetingshared.MeetingShared;
 
 public class MainActivity extends Activity
 {
@@ -24,14 +25,17 @@ public class MainActivity extends Activity
         String HTMLStream="";
         Bundle extras = getIntent().getExtras();
         
-        if (extras != null) {
+        if (extras != null) 
+        {
             HTMLStream = extras.getString("HTMLStream");
+            MeetingShared test = new MeetingShared();
+            
         }
         
         user1 = (EditText) findViewById(R.id.username1);
         text1 = (TextView) findViewById(R.id.text1); 
         text1.setMovementMethod(new ScrollingMovementMethod());
-        text1.setText("Press the button below:");
+        text1.setText("HTMLStream:");
         text1.append(HTMLStream);
  
 	button = (Button) findViewById(R.id.buttonUrl);
@@ -43,6 +47,8 @@ public class MainActivity extends Activity
                     intent.putExtra("username", user1.getText().toString());  //used to pass data
                     startActivity(intent);
                 }
-        });	
+        });
+        
+        
     }
 }
