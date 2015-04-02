@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
-import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -72,7 +71,8 @@ public class MainActivity extends Activity
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) 
             {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                //check the day of month against a custom class storing schedule availability.
+                //show a dialog with a list view to time frames.
             }
         });
     }

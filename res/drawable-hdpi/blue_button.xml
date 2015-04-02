@@ -11,9 +11,7 @@
           android:radius="6sp" />
       <padding
           android:left="10sp"
-          android:top="0sp"
-          android:right="10sp"
-          android:bottom="0sp" />
+          android:right="10sp" />
     </shape>
   </item>
   <item>
@@ -29,9 +27,7 @@
           android:radius="6sp" />
       <padding
           android:left="10sp"
-          android:top="0sp"
-          android:right="10sp"
-          android:bottom="0sp" />
+          android:right="10sp" />
     </shape>
   </item>
 </selector>
