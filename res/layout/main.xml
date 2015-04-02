@@ -3,12 +3,20 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:paddingTop="10sp"
-              android:orientation="vertical" >
+              android:orientation="vertical" >   
+     
+    <CalendarView
+        android:id="@+id/calendar1"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="300sp" 
+    />
+    
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+    >
         <TextView
             android:id="@+id/text1"
             android:layout_width="0dp"
@@ -16,31 +24,33 @@
             android:layout_weight="1.0"
             android:text="Username:" 
             android:paddingRight="10sp"
+            android:paddingLeft="10sp"
         />
         <EditText
             android:background="@drawable/rounded_edittext"
             android:id="@+id/username1"
-            android:layout_width="150sp"
+            android:layout_width="120sp"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:inputType="text"
             android:scrollHorizontally="true"
+            android:gravity="center_vertical"            
         />
-    </LinearLayout>
+        <Button
+            android:background="@drawable/blue_button"
+            android:id="@+id/buttonUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="25sp"
+            android:layout_gravity="right"
+            android:text="Retrieve Schedule" 
+            style="@style/button_text" 
+        />
+    </LinearLayout> 
     
-    <Button
-        android:background="@drawable/blue_button"
-        android:id="@+id/buttonUrl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="Retrieve Schedule" 
-        style="@style/button_text" />
-
     <TextView
         android:id="@+id/text2"
         android:layout_width="fill_parent"
         android:layout_height="0dip"
         android:layout_weight="1.0"
-    />
+    />   
 </LinearLayout>

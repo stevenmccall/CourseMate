@@ -63,8 +63,7 @@ public class ParseBuff {
 		int count = 0;
 		foundIndex = 0;
 		String findstr = "pm";
-		String start= null, finish = null, day = null;
-		String timestep = null;
+		String start, finish, day, timestep;
 		
 		for(String s: classSched){
 			lastIndex = 0;

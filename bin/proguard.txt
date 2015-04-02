@@ -1,6 +1,6 @@
-# view AndroidManifest.xml #generated:13
+# view AndroidManifest.xml #generated:15
 -keep class com.txstatecs4398.coursemate.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:10
+# view AndroidManifest.xml #generated:12
 -keep class com.txstatecs4398.coursemate.WebViewActivity { <init>(...); }
 

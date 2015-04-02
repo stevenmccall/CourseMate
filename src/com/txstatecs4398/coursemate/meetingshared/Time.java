@@ -68,8 +68,8 @@ public class Time {
 
     @Override
     public String toString() {
-        return "Day: "+day+" Start: "+Integer.toString(startTime)+" End: "
-                +Integer.toString(endTime);
+        return "Day{ "+day+" Start: "+Integer.toString(startTime)+" End: "
+                +Integer.toString(endTime)+" } ";
     }
 }
 
