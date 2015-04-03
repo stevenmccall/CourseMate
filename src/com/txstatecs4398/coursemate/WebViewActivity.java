@@ -21,12 +21,13 @@ public class WebViewActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.webview);
+        
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("username");
         }
         
-        setContentView(R.layout.webview);
         webView = (WebView) findViewById(R.id.webView1);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setUserAgentString("Mozilla/5.0 (Linux; U; Android 4.0.4; en-gb; GT-I9100 Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
@@ -50,7 +51,7 @@ public class WebViewActivity extends Activity {
                 } else if (newProgress == 100 && !doneTrail) {
                     doneTrail = true;
                     view.loadUrl("javascript:document.getElementById('UserID').value = '" + username + "';");
-                            /* + "var frms = document.getElementById('PIN').value = '" + password + "';" *///+ "};");
+                            // + "var frms = document.getElementById('PIN').value = '" + password + "';" //+ "};");
                             //+ "var frms = document.getElementsByName('loginform');"
                             //+ "frms[0].submit(); };");
                 }
@@ -74,7 +75,7 @@ public class WebViewActivity extends Activity {
                 return true;
             }
         });
-        webView.loadUrl("https://ssb.txstate.edu/prod/twbkwbis.P_ValLogin");
+        webView.loadUrl("https://ssb.txstate.edu/prod/twbkwbis.P_ValLogin");/**/
     }
 
     public void passStream(String HTMLStream) {
@@ -83,7 +84,7 @@ public class WebViewActivity extends Activity {
 
         Logger.getLogger(WebViewActivity.class.getName()).log(Level.SEVERE, null);
 
-        Intent intent = new Intent(WebViewActivity.this, MainActivity.class);
+        Intent intent = new Intent(WebViewActivity.this, PostLoginMainActivity.class);
         intent.putExtra("HTMLStream", HTMLStream);  //used to pass data
         intent.putExtra("netID", username);  //used to pass data
         startActivity(intent);
