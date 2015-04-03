@@ -40,10 +40,11 @@ public class MainActivity extends Activity
             @Override
             public void onClick(View arg0) 
                 { 
-                    if(!user1.getText().toString().isEmpty())
+                    if(!user1.getText().toString().isEmpty() && !pass1.getText().toString().isEmpty())
                     {
                         Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
                         intent.putExtra("username", user1.getText().toString());  //used to pass data
+                        intent.putExtra("password", pass1.getText().toString());  //used to pass data
                         startActivity(intent);
                     }
                 }
