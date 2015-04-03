@@ -2,23 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
+              android:background="#501213"
               android:paddingTop="10sp"
-              android:orientation="vertical" >   
+              android:orientation="vertical" >
+    
+    <ImageView 
+        android:id="@+id/image1"
+        android:contentDescription="Texas State"
+        android:src="@drawable/mainsite_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="50sp"
+    />   
     
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="50sp"
     >
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:text="Username:" 
-            android:paddingRight="10sp"
-            android:paddingLeft="10sp"
-        />
         <EditText
             android:background="@drawable/rounded_edittext"
             android:id="@+id/username1"
@@ -27,7 +31,9 @@
             android:maxLines="1"
             android:inputType="text"
             android:scrollHorizontally="true"
-            android:gravity="center_vertical"            
+            android:gravity="center_horizontal" 
+            android:hint="username"      
+            android:singleLine="true"
         />
     </LinearLayout> 
     
@@ -35,34 +41,28 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
     >
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:text="Password:" 
-            android:paddingRight="10sp"
-            android:paddingLeft="10sp"
-        />
         <EditText
             android:background="@drawable/rounded_edittext"
             android:id="@+id/password1"
             android:layout_width="120sp"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:scrollHorizontally="true"
-            android:gravity="center_vertical"            
+            android:gravity="center_horizontal" 
+            android:hint="password"      
+            android:singleLine="true"
         />
-        <Button
-            android:background="@drawable/blue_button"
-            android:id="@+id/buttonUrl"
-            android:layout_width="wrap_content"
-            android:layout_height="25sp"
-            android:layout_gravity="right"
-            android:text="Retrieve Schedule" 
-            style="@style/button_text" 
-        />
-    </LinearLayout> 
+    </LinearLayout>
+    <Button
+        android:background="@drawable/blue_button"
+        android:id="@+id/buttonUrl"
+        android:layout_width="wrap_content"
+        android:layout_height="25sp"
+        android:layout_gravity="center"
+        android:text="Login" 
+        style="@style/button_text" 
+    />
 </LinearLayout>
