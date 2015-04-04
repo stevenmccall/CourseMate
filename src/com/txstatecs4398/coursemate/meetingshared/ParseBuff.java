@@ -80,39 +80,23 @@ public class ParseBuff {
 					if(foundIndex != -1){
 						schedStep.add(timestep);
 						if(count == 1){
-							if(day == null){
-								day = "M";
-							}
+                                                    day = "M";	
 						}else if(count == 2){
-							if(day == null){
-								day = "T";
-							}
+                                                    day = "T";	
 						}else if(count == 3){
-							if(day == null){
-								day = "W";
-							}else{
-								day += "W";
-							}
+                                                    day = "W";
 						}else if(count == 4){
-							if(day == null){
-								day = "R";
-							}else{
-								day += "R";
-							}
+                                                    day = "R";
 						}else if(count == 5){
-							if(day == null){
-								day = "F";
-							}else{
-								day += "F";
-							}
+                                                    day = "F";
 						}
+                                                if(day != null){
+                                                    dayStep.add(day);
+                                                }
 					}
 					lastIndex2 += 5;
 					lastIndex = lastIndex2;
 				}
-			}
-			if(day != null){
-				dayStep.add(day);
 			}
 		}
 		int i = 1;
@@ -147,14 +131,9 @@ public class ParseBuff {
 							}
 						}
 						
-						for(int ii: startStep){
-							if(ii == startime){
-								found = true;
-							}
-						}
-						if(found == false){
-							startStep.add(startime);
-						}
+						
+						startStep.add(startime);
+						
 						lastIndex ++;
 					}else if (colcount == 2){
 						finish = st.substring(lastIndex-2, lastIndex + 3);
@@ -166,14 +145,8 @@ public class ParseBuff {
 							}
 						}
 						
-						for(Integer ii: finishStep){
-							if(ii == endtime){
-								found = true;
-							}
-						}
-						if(found == false){
-							finishStep.add(endtime);
-						}
+						finishStep.add(endtime);
+						
 						lastIndex ++;
 						break;
 					}
@@ -182,11 +155,11 @@ public class ParseBuff {
 			}
 		}
 			
-		for(i = 1; i < dayStep.size(); i++){
+		for(i = 2; i < dayStep.size(); i++){
 			System.out.println(dayStep.get(i));
-			System.out.println(startStep.get(i-1));
-			System.out.println(finishStep.get(i-1));	
-			tt = new Time(dayStep.get(i), startStep.get(i-1), finishStep.get(i-1), null);
+			System.out.println(startStep.get(i-2));
+			System.out.println(finishStep.get(i-2));	
+			tt = new Time(dayStep.get(i), startStep.get(i-2), finishStep.get(i-2), null);
 			IndSched.addTime(tt);
 		}
             return IndSched;

@@ -13,7 +13,7 @@
             android:name=".PostLoginMainActivity"
             android:theme="@android:style/Theme.NoTitleBar" 
             android:screenOrientation="portrait"
-        />            
+        />
         <activity
             android:name=".HtmlLoaderActivity"
             android:theme="@android:style/Theme.NoTitleBar" 
