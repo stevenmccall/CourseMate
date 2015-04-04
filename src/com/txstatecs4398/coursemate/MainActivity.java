@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends Activity
 {
@@ -43,6 +44,10 @@ public class MainActivity extends Activity
                         intent.putExtra("username", user1.getText().toString());  //used to pass data
                         intent.putExtra("password", pass1.getText().toString());  //used to pass data
                         startActivity(intent);
+                    }
+                    else{
+                        Toast toast = Toast.makeText(getApplicationContext(), "Enter a username and password to continue", Toast.LENGTH_SHORT);
+                        toast.show();
                     }
                 }
         });
