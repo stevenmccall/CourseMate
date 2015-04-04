@@ -17,8 +17,8 @@ public class WebViewActivity extends Activity {
     String username = "username";
     String password = "password";//if password contains \ must replace with 4 \ in a row.
     public boolean doneTrail = false;
-    //public String tempStream = "";
-    //private Thread httpThreadGet;
+    public String tempStream = "";
+    private Thread httpThreadGet;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class WebViewActivity extends Activity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             username = extras.getString("username");
-            password = extras.getString("password");            
+            password = extras.getString("password");
             password = password.replace("\\", "\\\\");
         }
 
@@ -44,7 +44,6 @@ public class WebViewActivity extends Activity {
             public boolean onConsoleMessage(ConsoleMessage cmsg) {
                 if (cmsg.message().startsWith("MAGIC") && done) {
                     passStream(cmsg.message().substring(5));
-                    //return true;
                 }
                 return true;
             }
@@ -61,13 +60,15 @@ public class WebViewActivity extends Activity {
                             + "document.getElementById('PIN').value = '" + password + "';"
                             + "var frms = document.getElementsByName('loginform');"
                             + "frms[0].submit(); };");
+                } else if (newProgress == 100 && !done) {
+                    Intent intent = new Intent(WebViewActivity.this, MainActivity.class);
+                    startActivity(intent);
                 }
             }
         });
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                //if(done)doneTrail = true;
                 if (url.contains("https://ssb.txstate.edu/prod/twbkwbis.P_GenMenu?name=bmenu.P_MainMnu&msg=WELCOME")) {
                     done = true;
                     url = "https://ssb.txstate.edu/prod/bwskfshd.P_CrseSchd";
@@ -80,29 +81,39 @@ public class WebViewActivity extends Activity {
                 return true;
             }
         });
-        //webView.loadUrl("https://ssb.txstate.edu/prod/twbkwbis.P_WWWLogin");/**/
-        /*
+        /*//if we cared to run the network on a seperate thread.
          httpThreadGet = new Thread() {
          @Override
          public void run() {
          try {
-         ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
-         nameValuePairs.add(new BasicNameValuePair("sid", username));
-         nameValuePairs.add(new BasicNameValuePair("PIN", password));
-         tempStream = CustomHttpClient.executeHttpPost("https://ssb.txstate.edu/prod/twbkwbis.P_ValLogin", nameValuePairs);
+         tempStream = "<FORM ACTION=\"https://ssb.txstate.edu/prod/twbkwbis.P_ValLogin\" METHOD=\"POST\" NAME=\"loginform\" AUTOCOMPLETE=\"ON\">\n"
+         + "<TABLE  CLASS=\"dataentrytable\" SUMMARY=\"This data entry table is used to format the user login fields\">\n"
+         + "<TR>\n"
+         + "<TD CLASS=\"delabel\" scope=\"row\" ><LABEL for=UserID><SPAN class=\"fieldlabeltext\">NetID:</SPAN></LABEL></TD>\n"
+         + "<TD CLASS=\"dedefault\"><INPUT TYPE=\"text\" NAME=\"sid\" SIZE=\"34\" MAXLENGTH=\"32\" ID=\"UserID\" >&nbsp; &nbsp; (<a href=\"http://www.tr.txstate.edu/itac/netid.html\" target=\"_blank\" tabindex=\"-1\">What is a NetID?</a>) </TD><TD></TD>\n"
+         + "</TR>\n"
+         + "<TR>\n"
+         + "<TD CLASS=\"delabel\" scope=\"row\" ><LABEL for=PIN><SPAN class=\"fieldlabeltext\">Password:</SPAN></LABEL></TD>\n"
+         + "<TD CLASS=\"dedefault\" ><INPUT TYPE=\"password\" NAME=\"PIN\" SIZE=\"64\" MAXLENGTH=\"63\" ID=\"PIN\"></TD>\n"
+         + "</TR>\n"
+         + "</TABLE>\n"
+         + "<P>\n"
+         + "<INPUT TYPE=\"submit\" VALUE=\"Login\">\n"
+         + "&nbsp;\n"
+         + "<br><br>\n"
+         + "<a href=\"https://tim.txstate.edu/onlinetoolkit/Home/ChallengeResponse.aspx?RequestType=ActivateNetID\" target=\"_blank\">Activate your NetID</a>&nbsp; &nbsp; &nbsp; &nbsp; <a href=\"https://tim.txstate.edu/onlinetoolkit/Home/ChallengeResponse.aspx?RequestType=ForgotPassword\" target=\"_blank\">Forgot Password?</a>\n"
+         + "<A HREF=\"/wtlhelp/twbhhelp.htm\" onMouseOver=\"window.status='Click Here for Help With Login ?';  return true\"  onMouseOut=\"window.status='';  return true\" onFocus=\"window.status='';  return true\" onBlur=\"window.status='';  return true\"></A>\n"
+         + "</FORM>";
+
+         webView.loadDataWithBaseURL("https://ssb.txstate.edu/prod/", tempStream, "text/html", "utf-8", "https://ssb.txstate.edu/prod/twbkwbis.P_WWWLogin");
          } catch (Exception e) {
          e.printStackTrace();
          }
-         Log.d("Runnable", "Hello, world!");
          }
          };
          httpThreadGet.start();
-         try {
-         httpThreadGet.join();
-         } catch (InterruptedException ex) {
-         Logger.getLogger(WebViewActivity.class.getName()).log(Level.SEVERE, null, ex);
-         }*/
-        String tempStream = "<FORM ACTION=\"https://ssb.txstate.edu/prod/twbkwbis.P_ValLogin\" METHOD=\"POST\" NAME=\"loginform\" AUTOCOMPLETE=\"ON\">\n"
+         */
+        tempStream = "<FORM ACTION=\"https://ssb.txstate.edu/prod/twbkwbis.P_ValLogin\" METHOD=\"POST\" NAME=\"loginform\" AUTOCOMPLETE=\"ON\">\n"
                 + "<TABLE  CLASS=\"dataentrytable\" SUMMARY=\"This data entry table is used to format the user login fields\">\n"
                 + "<TR>\n"
                 + "<TD CLASS=\"delabel\" scope=\"row\" ><LABEL for=UserID><SPAN class=\"fieldlabeltext\">NetID:</SPAN></LABEL></TD>\n"
@@ -120,6 +131,7 @@ public class WebViewActivity extends Activity {
                 + "<a href=\"https://tim.txstate.edu/onlinetoolkit/Home/ChallengeResponse.aspx?RequestType=ActivateNetID\" target=\"_blank\">Activate your NetID</a>&nbsp; &nbsp; &nbsp; &nbsp; <a href=\"https://tim.txstate.edu/onlinetoolkit/Home/ChallengeResponse.aspx?RequestType=ForgotPassword\" target=\"_blank\">Forgot Password?</a>\n"
                 + "<A HREF=\"/wtlhelp/twbhhelp.htm\" onMouseOver=\"window.status='Click Here for Help With Login ?';  return true\"  onMouseOut=\"window.status='';  return true\" onFocus=\"window.status='';  return true\" onBlur=\"window.status='';  return true\"></A>\n"
                 + "</FORM>";
+
         webView.loadDataWithBaseURL("https://ssb.txstate.edu/prod/", tempStream, "text/html", "utf-8", "https://ssb.txstate.edu/prod/twbkwbis.P_WWWLogin");
     }
 
