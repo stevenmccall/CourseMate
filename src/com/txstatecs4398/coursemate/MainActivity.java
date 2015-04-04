@@ -10,11 +10,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 public class MainActivity extends Activity
 {
-    private ImageView image;
     private EditText user1;
     private EditText pass1;
     private Button button;
@@ -26,9 +24,8 @@ public class MainActivity extends Activity
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.login);//sourceXML4
+        setContentView(R.layout.login);
         
-        image = (ImageView) findViewById(R.id.image1);
         user1 = (EditText) findViewById(R.id.username1);
         user1.setTextColor(Color.parseColor("#000000"));
         pass1 = (EditText) findViewById(R.id.password1);
