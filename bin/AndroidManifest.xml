@@ -11,10 +11,14 @@
     <application android:label="@string/app_name" android:icon="@drawable/supercat">
         <activity
             android:name=".PostLoginMainActivity"
-            android:theme="@android:style/Theme.NoTitleBar" />
+            android:theme="@android:style/Theme.NoTitleBar" 
+            android:screenOrientation="portrait"
+        />            
         <activity
-            android:name=".WebViewActivity"
-            android:theme="@android:style/Theme.NoTitleBar" />
+            android:name=".HtmlLoaderActivity"
+            android:theme="@android:style/Theme.NoTitleBar" 
+            android:screenOrientation="portrait"
+        />
         <activity 
             android:name="MainActivity"
             android:label="@string/app_name"

@@ -1,9 +1,9 @@
-# view AndroidManifest.xml #generated:18
+# view AndroidManifest.xml #generated:17
+-keep class com.txstatecs4398.coursemate.HtmlLoaderActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:22
 -keep class com.txstatecs4398.coursemate.MainActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:12
 -keep class com.txstatecs4398.coursemate.PostLoginMainActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:15
--keep class com.txstatecs4398.coursemate.WebViewActivity { <init>(...); }
 

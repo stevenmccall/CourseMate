@@ -39,7 +39,7 @@ public class MainActivity extends Activity
                 { 
                     if(!user1.getText().toString().isEmpty() && !pass1.getText().toString().isEmpty())
                     {
-                        Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
+                        Intent intent = new Intent(MainActivity.this, HtmlLoaderActivity.class);
                         intent.putExtra("username", user1.getText().toString());  //used to pass data
                         intent.putExtra("password", pass1.getText().toString());  //used to pass data
                         startActivity(intent);
