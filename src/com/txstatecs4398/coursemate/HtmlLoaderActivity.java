@@ -16,6 +16,7 @@ public class HtmlLoaderActivity extends Activity {
     public boolean done = false;
     String username = "username";
     String password = "password";
+    String schedule = "";
     public boolean doneTrail = false;
     public String tempStream = "";
     private Thread httpThreadGet;
@@ -29,6 +30,12 @@ public class HtmlLoaderActivity extends Activity {
         if (extras != null) {
             username = extras.getString("username");
             password = extras.getString("password");
+            
+            if (extras.containsKey("schedule"))//if nfc brought in coursemate schedule
+            {
+                schedule = extras.getString("schedule");
+            }
+            
             password = password.replace("\\", "\\\\"); // corrects \ escape character in passwords
         }
 
@@ -107,6 +114,8 @@ public class HtmlLoaderActivity extends Activity {
         Intent intent = new Intent(HtmlLoaderActivity.this, PostLoginMainActivity.class);
         intent.putExtra("HTMLStream", HTMLStream);  //used to pass data
         intent.putExtra("netID", username);  //used to pass data
+        if(!schedule.isEmpty())
+            intent.putExtra("schedule", schedule);  //used to pass data
         startActivity(intent);
     }
 }

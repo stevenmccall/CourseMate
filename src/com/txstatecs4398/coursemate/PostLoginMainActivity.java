@@ -21,16 +21,15 @@ public class PostLoginMainActivity extends Activity {
     private IndividualSchedule person;
     private CalendarView calendar1;
 
-    private NfcAdapter mAdapter;
-    private TextView mText;
-    private NdefMessage mMessage;
+    private NfcAdapter mNfcAdapter;
+    private NdefMessage mNdefMessage;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
-        String HTMLStream, netID;
+        String HTMLStream, netID, classmateSchedule;
         Bundle extras = getIntent().getExtras();
 
         calendar1 = (CalendarView) findViewById(R.id.calendar1);
@@ -42,22 +41,31 @@ public class PostLoginMainActivity extends Activity {
 
         if (extras != null) {
             HTMLStream = extras.getString("HTMLStream");
-            netID = extras.getString("netID");
+            netID = extras.getString("netID");classmateSchedule = extras.getString("schedule");
+
             ParseBuff test = new ParseBuff(netID);
             person = test.parse(HTMLStream);
             text1.setText(person.showSched());
 
-            mAdapter = NfcAdapter.getDefaultAdapter(this);
-
-            if (mAdapter != null) {
-                text1.append("Tap another Android phone with NFC to push 'NDEF Push Sample'");
-            } else {
-                mText.append("This phone is not NFC enabled.");
+            if (extras.containsKey("schedule"))//if nfc brought in coursemate schedule
+            {
+                classmateSchedule = extras.getString("schedule");
+                text1.append(classmateSchedule);
             }
 
-            // Create an NDEF message with some sample text
-            mMessage = new NdefMessage(
-                    new NdefRecord[]{newTextRecord(person.getNetID()+" "+person.showSched(), Locale.ENGLISH, true)});
+            mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
+
+            if (mNfcAdapter != null) {
+                text1.append("Tap to beam to another NFC device");
+            } else {
+                text1.append("This phone is not NFC enabled.");
+            }
+
+            // create an NDEF message with two records of plain text type
+            mNdefMessage = new NdefMessage(
+                    new NdefRecord[]{
+                        createNewTextRecord(person.getNetID(), Locale.ENGLISH, true),
+                        createNewTextRecord(person.showSched(), Locale.ENGLISH, true)});
 
         }
 
@@ -70,7 +78,7 @@ public class PostLoginMainActivity extends Activity {
         });
     }
 
-    public static NdefRecord newTextRecord(String text, Locale locale, boolean encodeInUtf8) {
+    public static NdefRecord createNewTextRecord(String text, Locale locale, boolean encodeInUtf8) {
         byte[] langBytes = locale.getLanguage().getBytes(Charset.forName("US-ASCII"));
 
         Charset utfEncoding = encodeInUtf8 ? Charset.forName("UTF-8") : Charset.forName("UTF-16");
@@ -90,16 +98,18 @@ public class PostLoginMainActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        if (mAdapter != null) {
-            mAdapter.enableForegroundNdefPush(this, mMessage);
+
+        if (mNfcAdapter != null) {
+            mNfcAdapter.enableForegroundNdefPush(this, mNdefMessage);
         }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (mAdapter != null) {
-            mAdapter.disableForegroundNdefPush(this);
+
+        if (mNfcAdapter != null) {
+            mNfcAdapter.disableForegroundNdefPush(this);
         }
     }
 }
