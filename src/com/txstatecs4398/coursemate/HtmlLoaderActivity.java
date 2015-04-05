@@ -118,4 +118,10 @@ public class HtmlLoaderActivity extends Activity {
             intent.putExtra("schedule", schedule);  //used to pass data
         startActivity(intent);
     }
+    
+    @Override
+    public void onPause() {
+        this.finish();
+        super.onPause();
+    }
 }

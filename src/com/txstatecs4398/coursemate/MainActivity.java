@@ -59,6 +59,8 @@ public class MainActivity extends Activity {
         } else {
             mTextView.setText("This phone is not NFC enabled.");
         }
+        
+        onNewIntent(getIntent());
 
         mPendingIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
@@ -129,8 +131,8 @@ public class MainActivity extends Activity {
                 Log.e("TagDispatch", e.toString());
             }
         }
-
-        mTextView.append("\n"+tempNetID+" schedule added!");
+        if(!tempNetID.isEmpty())
+            mTextView.append("\n"+tempNetID+" schedule added!");
         schedule += " " + s;
     }
 
@@ -145,6 +147,7 @@ public class MainActivity extends Activity {
 
     @Override
     public void onPause() {
+        //this.finish();//broke nfc when enabled.
         super.onPause();
 
         if (mNfcAdapter != null) {
