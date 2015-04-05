@@ -121,12 +121,12 @@ public class PostLoginMainActivity extends Activity {
     @Override
     public void onBackPressed() {
         if(exitApp){
-            this.finish();
+            finish();
         }
         else{
             exitApp = true;
             Toast toast = Toast.makeText(getApplicationContext(), "Press back one more time to EXIT", Toast.LENGTH_SHORT);
-            toast.show();  
+            toast.show();              
         }      
     }
 }

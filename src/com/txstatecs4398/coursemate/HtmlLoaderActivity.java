@@ -35,7 +35,6 @@ public class HtmlLoaderActivity extends Activity {
             {
                 schedule = extras.getString("schedule");
             }
-            
             password = password.replace("\\", "\\\\"); // corrects \ escape character in passwords
         }
 
