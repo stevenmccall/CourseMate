@@ -88,6 +88,7 @@ public class MainActivity extends Activity {
                         intent.putExtra("schedule", schedule);
                     }
                     startActivity(intent);
+                    finish();
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(), "Enter a username and password to continue", Toast.LENGTH_SHORT);
                     toast.show();

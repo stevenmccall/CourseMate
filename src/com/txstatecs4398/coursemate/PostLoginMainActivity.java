@@ -31,6 +31,7 @@ public class PostLoginMainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        
         setContentView(R.layout.main);
         String HTMLStream, netID, classmateSchedule;
         Bundle extras = getIntent().getExtras();

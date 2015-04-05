@@ -15,6 +15,15 @@
         android:layout_gravity="center"
         android:paddingTop="50sp"
     />   
+    <ImageView 
+        android:id="@+id/image2"
+        android:contentDescription="NFC"
+        android:src="@drawable/nfc_logo32x32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:paddingRight="50sp"
+    />   
     
     <LinearLayout
         android:orientation="horizontal"

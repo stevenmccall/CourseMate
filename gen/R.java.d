@@ -1,6 +1,7 @@
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\gen\com\txstatecs4398\coursemate\R.java \
  : C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\blue_button.xml \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\mainsite_logo.png \
+C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\nfc_logo32x32.png \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\rounded_edittext.xml \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\supercat.png \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\drawable-ldpi\ic_launcher.png \
@@ -13,6 +14,7 @@ C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\values\strings.xml 
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\values\styles.xml \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\xml\nfc_tech_filter.xml \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\res\drawable-hdpi\mainsite_logo.png \
+C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\res\drawable-hdpi\nfc_logo32x32.png \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\res\drawable-hdpi\supercat.png \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\res\drawable-ldpi\ic_launcher.png \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\res\drawable-mdpi\ic_launcher.png \

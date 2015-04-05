@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
+              android:background="#501213"
               android:paddingTop="10sp"
               android:orientation="vertical" >   
      
@@ -12,10 +13,36 @@
         android:layout_height="300sp" 
     />
     
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="#501213"
+                  android:orientation="horizontal" 
+                  android:layout_gravity="right"
+                  android:paddingRight="50sp">       
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="Tap to Send "
+            
+        />      
+        <ImageView 
+            android:id="@+id/image1"
+            android:contentDescription="NFC"
+            android:src="@drawable/nfc_logo32x32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+        />   
+    </LinearLayout>
+    
     <TextView
         android:id="@+id/text2"
         android:layout_width="fill_parent"
         android:layout_height="0dip"
         android:layout_weight="1.0"
+        android:paddingTop="10sp"
     />   
 </LinearLayout>
