@@ -12,20 +12,20 @@ import java.util.LinkedList;
  */
 public class IndividualSchedule{// extends GroupCalendar{
     private LinkedList<Time> weekSched;
+    String schedule = "";
     String netID;
     
     public IndividualSchedule(String netID){
         weekSched = new LinkedList<>();
         this.netID=netID;
+        schedule = "";
     }
 
     public void addTime(Time t){
         weekSched.add(t);
     }
     
-    public String showSched(){
-        String schedule = "";
-        
+    public String showSched(){        
         for(Time day: weekSched)
         {
             schedule += day.toString()+" ";

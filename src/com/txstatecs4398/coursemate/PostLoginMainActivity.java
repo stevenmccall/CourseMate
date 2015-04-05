@@ -50,7 +50,7 @@ public class PostLoginMainActivity extends Activity {
 
             ParseBuff test = new ParseBuff(netID);
             person = test.parse(HTMLStream);
-            text1.setText(person.showSched());
+            text1.setText(person.showSched()+"\n\n");
 
             if (extras.containsKey("schedule"))//if nfc brought in coursemate schedule
             {
@@ -60,9 +60,7 @@ public class PostLoginMainActivity extends Activity {
 
             mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
-            if (mNfcAdapter != null) {
-                text1.append("Tap to beam to another NFC device");
-            } else {
+            if (mNfcAdapter == null) {
                 text1.append("This phone is not NFC enabled.");
             }
 
@@ -128,5 +126,11 @@ public class PostLoginMainActivity extends Activity {
             Toast toast = Toast.makeText(getApplicationContext(), "Press back one more time to EXIT", Toast.LENGTH_SHORT);
             toast.show();              
         }      
+    }
+    
+    @Override
+    public void onDestroy() {
+        System.runFinalizersOnExit(true);  
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
 }
