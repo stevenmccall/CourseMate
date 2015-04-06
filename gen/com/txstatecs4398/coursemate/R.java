@@ -19,15 +19,15 @@ public final class R {
         public static final int supercat=0x7f020005;
     }
     public static final class id {
-        public static final int buttonUrl=0x7f070005;
-        public static final int calendar1=0x7f070007;
+        public static final int buttonUrl=0x7f070006;
+        public static final int calendar1=0x7f070008;
         public static final int image1=0x7f070000;
-        public static final int image2=0x7f070002;
-        public static final int password1=0x7f070004;
-        public static final int text1=0x7f070008;
+        public static final int image2=0x7f070003;
+        public static final int password1=0x7f070005;
+        public static final int text1=0x7f070002;
         public static final int text2=0x7f070009;
-        public static final int textview1=0x7f070006;
-        public static final int username1=0x7f070003;
+        public static final int textview1=0x7f070007;
+        public static final int username1=0x7f070004;
         public static final int webView1=0x7f070001;
     }
     public static final class layout {

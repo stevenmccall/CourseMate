@@ -55,11 +55,12 @@ public class MainActivity extends Activity {
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
         if (mNfcAdapter != null) {
-            mTextView.setText("Read an NFC tag");
+            Toast toast = Toast.makeText(getApplicationContext(), "Read an NFC tag", Toast.LENGTH_SHORT);
+            toast.show();
         } else {
             mTextView.setText("This phone is not NFC enabled.");
         }
-        
+
         onNewIntent(getIntent());
 
         mPendingIntent = PendingIntent.getActivity(this, 0,
@@ -132,9 +133,10 @@ public class MainActivity extends Activity {
                 Log.e("TagDispatch", e.toString());
             }
         }
-        if(!tempNetID.isEmpty())
-            mTextView.append("\n"+tempNetID+" schedule added!");
-        schedule += " " + s;
+        if (!tempNetID.isEmpty()) {
+            mTextView.append("\n" + tempNetID + " schedule added!");
+        }
+        schedule += " " + s + "\n\n";
     }
 
     @Override

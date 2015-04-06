@@ -51,7 +51,7 @@ public class PostLoginMainActivity extends Activity {
             ParseBuff test = new ParseBuff(netID);
             person = test.parse(HTMLStream);
             String scheduleText = person.showSched();
-            text1.setText(scheduleText+"\n\n");
+            text1.setText(scheduleText);
 
             if (extras.containsKey("schedule"))//if nfc brought in coursemate schedule
             {
