@@ -25,7 +25,8 @@ public class IndividualSchedule{// extends GroupCalendar{
         weekSched.add(t);
     }
     
-    public String showSched(){        
+    public String showSched(){   
+        schedule = "";
         for(Time day: weekSched)
         {
             schedule += day.toString()+" ";

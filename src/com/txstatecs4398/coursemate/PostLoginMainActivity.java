@@ -50,8 +50,8 @@ public class PostLoginMainActivity extends Activity {
 
             ParseBuff test = new ParseBuff(netID);
             person = test.parse(HTMLStream);
-            String scheduleText = person.showSched();
-            text1.setText(scheduleText);
+            //String scheduleText = person.showSched();
+            text1.setText(person.showSched());//scheduleText);
 
             if (extras.containsKey("schedule"))//if nfc brought in coursemate schedule
             {
@@ -69,7 +69,7 @@ public class PostLoginMainActivity extends Activity {
             mNdefMessage = new NdefMessage(
                     new NdefRecord[]{
                         createNewTextRecord(person.getNetID(), Locale.ENGLISH, true),
-                        createNewTextRecord(scheduleText, Locale.ENGLISH, true)});
+                        createNewTextRecord(person.showSched(), Locale.ENGLISH, true)});
 
         }
 
