@@ -142,18 +142,23 @@ public class LoginActivity extends Activity {
     public void onNewIntent(Intent intent) {
         Parcelable[] data;
         data = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
-        if (data != null) {
-            try {
-                for (int i = 0; i < data.length; i++) {
-                    NdefRecord[] recs = ((NdefMessage) data[i]).getRecords();
-                    for (int j = 0; j < recs.length; j++) {
-                        if (recs[j].getTnf() == NdefRecord.TNF_WELL_KNOWN
-                                && Arrays.equals(recs[j].getType(), NdefRecord.RTD_TEXT)) {
+        if (data != null) 
+        {
+            try 
+            {
+                for (Parcelable data1 : data) 
+                {
+                    NdefRecord[] recs = ((NdefMessage) data1).getRecords();
+                    for (int j = 0; j < recs.length; j++) 
+                    {
+                        if (recs[j].getTnf() == NdefRecord.TNF_WELL_KNOWN && Arrays.equals(recs[j].getType(), NdefRecord.RTD_TEXT)) 
+                        {
                             byte[] payload = recs[j].getPayload();
                             String textEncoding = ((payload[0] & 0200) == 0) ? "UTF-8" : "UTF-16";
                             int langCodeLen = payload[0] & 0077;
 
-                            if (j == 0) {//setup linked list or storage for these added people
+                            if (j%2 == 0)//setup linked list or storage for these added people 
+                            {
                                 nfcNetID = (new String(payload, langCodeLen + 1, payload.length - langCodeLen - 1,
                                         textEncoding));
                             } else {

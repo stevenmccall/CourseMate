@@ -6,7 +6,6 @@
 package com.txstatecs4398.coursemate;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -74,7 +73,7 @@ public class GroupSelectionActivity extends Activity {
         });
     }
 
-    public boolean groupRetriever() {//move to PostLoginMainActivity after testing
+    public boolean groupRetriever() {
         File root = getFilesDir();
 
         FilenameFilter beginswithm = new FilenameFilter() {

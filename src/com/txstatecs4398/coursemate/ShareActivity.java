@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
-import android.widget.Toast;
 import java.nio.charset.Charset;
 import java.util.Locale;
 import java.io.FileInputStream;
