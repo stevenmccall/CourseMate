@@ -1,12 +1,18 @@
 package com.txstatecs4398.coursemate;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import com.txstatecs4398.coursemate.meetingshared.IndividualSchedule;
+import com.txstatecs4398.coursemate.meetingshared.ParseBuff;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -64,7 +70,7 @@ public class HtmlLoaderActivity extends Activity {
                             + "var frms = document.getElementsByName('loginform');"
                             + "frms[0].submit(); };");
                 } else if (newProgress == 100 && !done) {
-                    Intent intent = new Intent(HtmlLoaderActivity.this, MainActivity.class);
+                    Intent intent = new Intent(HtmlLoaderActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
             }
@@ -108,14 +114,25 @@ public class HtmlLoaderActivity extends Activity {
         webView.loadUrl("javascript:window.HtmlViewer.showHTML"
                 + "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');");
 
-        Logger.getLogger(HtmlLoaderActivity.class.getName()).log(Level.SEVERE, null);
+        ParseBuff test = new ParseBuff(username);
+        IndividualSchedule person = test.parse(HTMLStream);
+        loginCreate(person.getNetID(), person.showSched());
 
-        Intent intent = new Intent(HtmlLoaderActivity.this, PostLoginMainActivity.class);
-        intent.putExtra("HTMLStream", HTMLStream);  //used to pass data
-        intent.putExtra("netID", username);  //used to pass data
-        if(!schedule.isEmpty())
-            intent.putExtra("schedule", schedule);  //used to pass data
+        Intent intent = new Intent(HtmlLoaderActivity.this, GroupSelectionActivity.class);
         startActivity(intent);
+    }
+    
+     public void loginCreate(String userSave, String schedSave) {
+        try {            
+            FileOutputStream fs = openFileOutput("user", Context.MODE_PRIVATE);
+            OutputStreamWriter ow = new OutputStreamWriter(fs);
+            BufferedWriter writer = new BufferedWriter(ow);
+            writer.write(userSave+"\n");
+            writer.write(schedSave);
+            writer.flush();
+            writer.close();
+        } 
+        catch (Exception e){}
     }
     
     @Override

@@ -5,14 +5,13 @@
               android:background="#501213"
               android:paddingTop="10sp"
               android:orientation="vertical" >   
-     
+    
     <CalendarView
         android:id="@+id/calendar1"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="300sp" 
     />
-    
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -21,12 +20,19 @@
                   android:layout_gravity="right"
                   android:paddingRight="50sp">       
         <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingTop="10sp"
+            android:layout_marginRight="10sp"
+        />       
+        <TextView
             android:id="@+id/text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
-            android:text="Tap to Send "
-            
+            android:text="Tap to Send "            
         />      
         <ImageView 
             android:id="@+id/image1"
@@ -37,12 +43,4 @@
             
         />   
     </LinearLayout>
-    
-    <TextView
-        android:id="@+id/text2"
-        android:layout_width="fill_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1.0"
-        android:paddingTop="10sp"
-    />   
 </LinearLayout>
