@@ -3,7 +3,9 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:background="#501213"
-              android:orientation="vertical" >
+              android:orientation="vertical" 
+              android:paddingTop="10sp"
+              android:paddingBottom="20sp">
     
     <ImageView 
         android:id="@+id/image1"
@@ -12,7 +14,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:paddingTop="10sp"
         android:paddingBottom="10sp"
     />   
     <EditText
