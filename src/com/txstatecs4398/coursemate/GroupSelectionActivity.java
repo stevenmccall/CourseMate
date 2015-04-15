@@ -20,6 +20,9 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.txstatecs4398.coursemate.meetingshared.GroupSchedule;
+import com.txstatecs4398.coursemate.meetingshared.IndividualSchedule;
+import com.txstatecs4398.coursemate.meetingshared.Time;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -58,17 +61,27 @@ public class GroupSelectionActivity extends Activity {
         view = (TextView) findViewById(R.id.text1);
         // end of view setup code
 
-        if (extras != null) {
+        if (extras != null) 
+        {
             nfcNetID = extras.getString("nfcNetID");
             nfcSched = extras.getString("nfcSched");
-            view.append(nfcNetID + "\n");
-            view.append(nfcSched);
+            //start of group setup
+            GroupSchedule temp = new GroupSchedule();
+            //start of adding person
+            IndividualSchedule tempPerson = new IndividualSchedule(nfcNetID);
+            tempPerson.nfcParse(nfcSched);
+            temp.AddPerson(tempPerson);
+            //start of displaying storage
+            for(IndividualSchedule person : temp.returnStorage())
+            {
+                view.append(person.getNetID()+"\n"+person.showSched()+"\n\n");
+            }
         }
         //----------Start of Group Processing--------------
-        
+        /*
         if(groupRetriever())
         {
-        }
+        }*/
         
         //----------start of buttons-----
         shareButton = (Button) findViewById(R.id.passSched);

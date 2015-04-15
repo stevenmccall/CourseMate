@@ -13,6 +13,7 @@ C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstate
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\HtmlLoaderActivity.class \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\LoginActivity$1.class \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\LoginActivity.class \
+C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\meetingshared\GroupSchedule.class \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\meetingshared\IndividualSchedule.class \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\meetingshared\ParseBuff.class \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\meetingshared\Time.class \

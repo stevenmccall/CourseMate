@@ -22,7 +22,7 @@ public class Time {
      * @param endTime
      * @param event
      */
-        protected Time(String day, int startTime, int endTime, String event) {
+        public Time(String day, int startTime, int endTime, String event) {
         this.day=day;
         this.startTime=startTime;
         this.endTime=endTime;
