@@ -11,24 +11,24 @@ import java.util.*;
  *
  * @author Harrison
  */
-public class GroupSchedule{// extends IndividualSchedule {
-    private LinkedList<IndividualSchedule> groupWeek;
+public class Group{// extends Person {
+    private LinkedList<Person> groupWeek;
     //private List<IndividualSchedule> groupWeek;
     int numOfMembers;
 
-    public GroupSchedule(){
+    public Group(){
         groupWeek = new LinkedList<>();
         //groupWeek = new ArrayList<>();
         this.numOfMembers = 0;
     }
     
-    public void AddPerson(IndividualSchedule IndSched){
+    public void AddPerson(Person IndSched){
                 groupWeek.add(IndSched);
                 numOfMembers++;
     }
     
     public void RemovePerson(String NetID){
-        for (IndividualSchedule IndSched : groupWeek) {
+        for (Person IndSched : groupWeek) {
             if (IndSched.getNetID().equalsIgnoreCase(NetID)){
                 groupWeek.remove(IndSched);
                 numOfMembers--;
@@ -37,7 +37,7 @@ public class GroupSchedule{// extends IndividualSchedule {
         }
     }
     
-    public LinkedList<IndividualSchedule> returnStorage(){
+    public LinkedList<Person> returnStorage(){
         return groupWeek;
     }
 }

@@ -11,49 +11,41 @@ import java.util.LinkedList;
  *
  * @author Harrison
  */
-public class IndividualSchedule {// extends GroupCalendar{
+public class Person {// extends GroupCalendar{
 
-    private LinkedList<Time> weekSched;
+    private LinkedList<Event> weekSched;
     String schedule = "";
     String netID;
 
-    public IndividualSchedule(String netID) {
+    public Person(String netID) {
         weekSched = new LinkedList<>();
         this.netID = netID;
         schedule = "";
     }
 
-    public void addTime(Time t) {
+    public void addEvent(Event t) {
         weekSched.add(t);
     }
 
     /**
  *
  * @author Steven McCall
+     * @param nfcSource showSchedule passed through NFC communication.
  */
     public void nfcParse(String nfcSource) {
         String day = "";
         int start = 0;
 
         String[] tempOut = nfcSource.replaceAll("Day", "").replaceAll("Start", "").replaceAll("End", "").split("\\W");
-        for (String time : tempOut) {
-            if (!time.equals("")) {
-                if (day.equals("")) {
-                    if (time.equals("M")) {
-                        day = "Monday";
-                    } else if (time.equals("T")) {
-                        day = "Tuesday";
-                    } else if (time.equals("W")) {
-                        day = "Wednesday";
-                    } else if (time.equals("R")) {
-                        day = "Thursday";
-                    } else {
-                        day = "Friday";
-                    }
+        for (String eventFragment : tempOut) {
+            if (!eventFragment.equals("")) {
+                if (day.equals("")) 
+                {
+                    day = eventFragment;
                 } else if (start == 0) {
-                    start = Integer.parseInt(time);
+                    start = Integer.parseInt(eventFragment);
                 } else {
-                    addTime(new Time(day, start, Integer.parseInt(time), null));
+                    addEvent(new Event(day, start, Integer.parseInt(eventFragment), null));
 
                     day = "";
                     start = 0;
@@ -64,7 +56,7 @@ public class IndividualSchedule {// extends GroupCalendar{
 
     public String showSched() {
         schedule = "";
-        for (Time day : weekSched) {
+        for (Event day : weekSched) {
             schedule += day.toString() + " ";
         }
         return schedule;

@@ -7,11 +7,9 @@ package com.txstatecs4398.coursemate;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -20,14 +18,13 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.txstatecs4398.coursemate.meetingshared.GroupSchedule;
-import com.txstatecs4398.coursemate.meetingshared.IndividualSchedule;
-import com.txstatecs4398.coursemate.meetingshared.Time;
+import com.txstatecs4398.coursemate.meetingshared.Person;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -65,23 +62,26 @@ public class GroupSelectionActivity extends Activity {
         {
             nfcNetID = extras.getString("nfcNetID");
             nfcSched = extras.getString("nfcSched");
-            //start of group setup
-            GroupSchedule temp = new GroupSchedule();
+            //start of group setup //copy commented out code to group activity.
+            //GroupSchedule temp = new GroupSchedule();
             //start of adding person
-            IndividualSchedule tempPerson = new IndividualSchedule(nfcNetID);
+            Person tempPerson = new Person(nfcNetID);
             tempPerson.nfcParse(nfcSched);
-            temp.AddPerson(tempPerson);
+            personCreate(tempPerson);
+            
+            
+           // temp.AddPerson(tempPerson);
             //start of displaying storage
-            for(IndividualSchedule person : temp.returnStorage())
-            {
-                view.append(person.getNetID()+"\n"+person.showSched()+"\n\n");
-            }
+            //for(Person person : temp.returnStorage())
+            //{
+            //    view.append(person.getNetID()+"\n"+person.showSched()+"\n\n");
+            //}
         }
         //----------Start of Group Processing--------------
-        /*
+        ///*
         if(groupRetriever())
         {
-        }*/
+        }//*/
         
         //----------start of buttons-----
         shareButton = (Button) findViewById(R.id.passSched);
@@ -159,7 +159,22 @@ public class GroupSelectionActivity extends Activity {
             writer.flush();
             writer.close();
         } 
-        catch (Exception e){return false;}
+        catch (IOException e){return false;}
+        
+        return true;
+    }
+    
+    public boolean personCreate(Person person) 
+    {
+        try {            
+            FileOutputStream fs = openFileOutput("CMP"+person.getNetID(), Context.MODE_PRIVATE);
+            OutputStreamWriter ow = new OutputStreamWriter(fs);
+            BufferedWriter writer = new BufferedWriter(ow);
+            writer.write(person.showSched());
+            writer.flush();
+            writer.close();
+        } 
+        catch (IOException e){return false;}
         
         return true;
     }

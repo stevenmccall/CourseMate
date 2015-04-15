@@ -8,8 +8,8 @@ import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import com.txstatecs4398.coursemate.meetingshared.IndividualSchedule;
-import com.txstatecs4398.coursemate.meetingshared.ParseBuff;
+import com.txstatecs4398.coursemate.meetingshared.Person;
+import com.txstatecs4398.coursemate.meetingshared.HTMLParser;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
@@ -114,8 +114,8 @@ public class HtmlLoaderActivity extends Activity {
         webView.loadUrl("javascript:window.HtmlViewer.showHTML"
                 + "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');");
 
-        ParseBuff test = new ParseBuff(username);
-        IndividualSchedule person = test.parse(HTMLStream);
+        HTMLParser test = new HTMLParser(username);
+        Person person = test.parse(HTMLStream);
         loginCreate(person.getNetID(), person.showSched());
 
         Intent intent = new Intent(HtmlLoaderActivity.this, GroupSelectionActivity.class);

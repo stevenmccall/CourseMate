@@ -13,7 +13,7 @@ import java.util.LinkedList;
  *
  * @author Jack
  */
-public class ParseBuff {
+public class HTMLParser {
 
     static String strbuf;
     static int lastIndex, lastIndex2 = 0;
@@ -21,8 +21,8 @@ public class ParseBuff {
     static String findstr = "pm";
     static String start = null, finish = null, day = null;
     static int startime, endtime;
-    static Time tt;
-    public IndividualSchedule IndSched;
+    static Event tt;
+    public Person IndSched;
 
     static byte[] buffer = new byte[(int) new File("schedule.txt").length()];
     static BufferedInputStream f = null;
@@ -31,14 +31,14 @@ public class ParseBuff {
     static ArrayList<Integer> startStep = new ArrayList<>();
     static ArrayList<Integer> finishStep = new ArrayList<>();
 
-    public ParseBuff(String netID) {
-        IndSched = new IndividualSchedule(netID);
+    public HTMLParser(String netID) {
+        IndSched = new Person(netID);
         //this is temp untill steven adds his athetication program+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++       
     }
 
     //----------------------------------------------------------------------------- hk added end    
 
-    public IndividualSchedule parse(String HTMLStream) throws NullPointerException {
+    public Person parse(String HTMLStream) throws NullPointerException {
         int pmcount = 0, colcount = 0;
 
         strbuf = HTMLStream;
@@ -189,8 +189,8 @@ public class ParseBuff {
             System.out.println(dayStep.get(i));
             System.out.println(startStep.get(i - 2));
             System.out.println(finishStep.get(i - 2));
-            tt = new Time(dayStep.get(i), startStep.get(i - 2), finishStep.get(i - 2), null);
-            IndSched.addTime(tt);
+            tt = new Event(dayStep.get(i), startStep.get(i - 2), finishStep.get(i - 2), null);
+            IndSched.addEvent(tt);
         }
         return IndSched;
     }

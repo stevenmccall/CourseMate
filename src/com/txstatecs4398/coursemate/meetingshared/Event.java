@@ -9,7 +9,7 @@ package com.txstatecs4398.coursemate.meetingshared;
  *
  * @author Harrison
  */
-public class Time {
+public class Event {
     String day;
     int startTime;
     int endTime;
@@ -22,7 +22,7 @@ public class Time {
      * @param endTime
      * @param event
      */
-        public Time(String day, int startTime, int endTime, String event) {
+        public Event(String day, int startTime, int endTime, String event) {
         this.day=day;
         this.startTime=startTime;
         this.endTime=endTime;
@@ -58,7 +58,7 @@ public class Time {
     }
     
     /**
-     * Print the attributes of the Time, in a formatted fashion.
+     * Print the attributes of the Event, in a formatted fashion.
      */
     //@Override
     public void print() {
