@@ -12,8 +12,10 @@ C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\drawable-xhdpi\ic_l
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\layout\dialog.xml \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\layout\group.xml \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\layout\html_loader.xml \
+C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\layout\list_row.xml \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\layout\login.xml \
-C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\layout\share.xml \
+C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\layout\share_group.xml \
+C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\layout\share_person.xml \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\values\strings.xml \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\values\styles.xml \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\xml\nfc_tech_filter.xml \

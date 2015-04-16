@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="#501213"
+              android:paddingTop="10sp"
+              android:orientation="vertical" >   
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="300sp"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:orientation="vertical" >
+        <Button
+            android:background="@drawable/blue_button"
+            android:id="@+id/addPerson"
+            android:layout_width="300sp"
+            android:layout_height="50sp"
+            android:text="+ Add Group Member" 
+            style="@style/button_text"
+            android:textSize="15sp"
+        />
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="#501213"
+                  android:orientation="horizontal" 
+                  android:layout_gravity="right"
+                  android:paddingRight="10sp">       
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:paddingTop="10sp"
+            />       
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="80sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:text="Tap to Send "            
+            />      
+            <ImageView 
+                android:id="@+id/image1"
+                android:contentDescription="NFC"
+                android:src="@drawable/nfc_logo32x32"
+                android:layout_width="40sp"
+                android:layout_height="wrap_content"            
+            />   
+        </LinearLayout>
+        <TextView
+                android:id="@+id/text3"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:paddingTop="10sp"
+        />
+    </LinearLayout>
+</LinearLayout>

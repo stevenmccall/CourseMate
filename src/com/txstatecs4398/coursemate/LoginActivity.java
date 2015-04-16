@@ -157,7 +157,7 @@ public class LoginActivity extends Activity {
                             String textEncoding = ((payload[0] & 0200) == 0) ? "UTF-8" : "UTF-16";
                             int langCodeLen = payload[0] & 0077;
 
-                            if (j%2 == 0)//setup linked list or storage for these added people 
+                            if (j%2 == 0)
                             {
                                 nfcNetID = (new String(payload, langCodeLen + 1, payload.length - langCodeLen - 1,
                                         textEncoding));

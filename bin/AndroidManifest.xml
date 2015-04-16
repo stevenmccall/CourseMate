@@ -13,12 +13,17 @@
     
     <application android:label="@string/app_name" android:icon="@drawable/supercat">
         <activity
+            android:name=".ShareGroupActivity"
+            android:theme="@android:style/Theme.NoTitleBar" 
+            android:screenOrientation="portrait"
+        />
+        <activity
             android:name=".GroupSelectionActivity"
             android:theme="@android:style/Theme.NoTitleBar" 
             android:screenOrientation="portrait"
         />
         <activity
-            android:name=".ShareActivity"
+            android:name=".SharePersonActivity"
             android:theme="@android:style/Theme.NoTitleBar" 
             android:screenOrientation="portrait"
         />

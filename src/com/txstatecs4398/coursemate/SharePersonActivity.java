@@ -15,7 +15,7 @@ import java.util.Locale;
 import java.io.FileInputStream;
 import java.util.Scanner;
 
-public class ShareActivity extends Activity {
+public class SharePersonActivity extends Activity {
 
     private TextView text1;
     private CalendarView calendar1;
@@ -28,7 +28,7 @@ public class ShareActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.share);
+        setContentView(R.layout.share_person);
 
         calendar1 = (CalendarView) findViewById(R.id.calendar1);
         calendar1.setShowWeekNumber(false);
@@ -119,7 +119,7 @@ public class ShareActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(ShareActivity.this, LoginActivity.class);
+        Intent intent = new Intent(SharePersonActivity.this, LoginActivity.class);
                 startActivity(intent);
     }
 }

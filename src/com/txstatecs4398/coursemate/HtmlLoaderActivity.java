@@ -13,8 +13,6 @@ import com.txstatecs4398.coursemate.meetingshared.HTMLParser;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class HtmlLoaderActivity extends Activity {
 
@@ -127,8 +125,12 @@ public class HtmlLoaderActivity extends Activity {
             FileOutputStream fs = openFileOutput("user", Context.MODE_PRIVATE);
             OutputStreamWriter ow = new OutputStreamWriter(fs);
             BufferedWriter writer = new BufferedWriter(ow);
-            writer.write(userSave+"\n");
+            
+            writer.write(userSave);
+            writer.newLine();
             writer.write(schedSave);
+            writer.newLine();
+            
             writer.flush();
             writer.close();
         } 

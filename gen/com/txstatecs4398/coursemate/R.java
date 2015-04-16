@@ -22,26 +22,32 @@ public final class R {
     }
     public static final class id {
         public static final int addGroup=0x7f070002;
-        public static final int buttonUrl=0x7f07000a;
-        public static final int calendar1=0x7f07000c;
+        public static final int addPerson=0x7f07000e;
+        public static final int buttonUrl=0x7f07000c;
+        public static final int calendar1=0x7f070011;
         public static final int image1=0x7f070000;
-        public static final int image2=0x7f070007;
-        public static final int logout=0x7f070005;
+        public static final int image2=0x7f070009;
+        public static final int list1=0x7f070004;
+        public static final int logout=0x7f070006;
         public static final int passSched=0x7f070003;
-        public static final int password1=0x7f070009;
-        public static final int text1=0x7f070004;
-        public static final int text2=0x7f07000d;
-        public static final int textview1=0x7f07000b;
+        public static final int password1=0x7f07000b;
+        public static final int rowTextView=0x7f070008;
+        public static final int text1=0x7f070005;
+        public static final int text2=0x7f07000f;
+        public static final int text3=0x7f070010;
+        public static final int textview1=0x7f07000d;
         public static final int userGroup=0x7f070001;
-        public static final int username1=0x7f070008;
-        public static final int webView1=0x7f070006;
+        public static final int username1=0x7f07000a;
+        public static final int webView1=0x7f070007;
     }
     public static final class layout {
         public static final int dialog=0x7f030000;
         public static final int group=0x7f030001;
         public static final int html_loader=0x7f030002;
-        public static final int login=0x7f030003;
-        public static final int share=0x7f030004;
+        public static final int list_row=0x7f030003;
+        public static final int login=0x7f030004;
+        public static final int share_group=0x7f030005;
+        public static final int share_person=0x7f030006;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
