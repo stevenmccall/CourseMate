@@ -62,7 +62,7 @@ public class ShareGroupActivity extends Activity {
             peopleRetriever();
             
             for(String indUser : userAdded)
-                view.append(indUser);
+                view.append(indUser+"\n");
 
             //----------start of buttons-----
             dialogCreate();
@@ -137,7 +137,8 @@ public class ShareGroupActivity extends Activity {
         alertDialog = alertDialogBuilder.create();
     }
 
-    public void groupCreate() {
+    public void groupCreate() 
+    {
         try {
             FileOutputStream fs = openFileOutput("CMG" + groupName, Context.MODE_PRIVATE);
             OutputStreamWriter ow = new OutputStreamWriter(fs);
@@ -152,8 +153,7 @@ public class ShareGroupActivity extends Activity {
 
             writer.flush();
             writer.close();
-        } catch (IOException e) {
-        }
+        } catch (IOException e) {}
     }
 
     public boolean groupRetriever() 
@@ -166,7 +166,7 @@ public class ShareGroupActivity extends Activity {
 
             while (in.hasNextLine()) 
             {
-                userAdded.add(in.nextLine() + "\n");
+                userAdded.add(in.nextLine());
                 schedAdded.add(in.nextLine());
             }
         } catch (Exception e) {return false;}
