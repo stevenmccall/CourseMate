@@ -1,14 +1,17 @@
 package com.txstatecs4398.coursemate;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,6 +19,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -30,10 +34,14 @@ public class ShareGroupActivity extends Activity {
     private TextView view;
     private NfcAdapter mNfcAdapter;
     private NdefMessage mNdefMessage;
-    private ArrayList<String> user = new ArrayList();
-    private ArrayList<String> sched = new ArrayList();
-    private ArrayList<NdefRecord> NFCRecords = new ArrayList();
+    private final ArrayList<Integer> mSelectedItems = new ArrayList();
+    private final ArrayList<String> user = new ArrayList();
+    private final ArrayList<String> sched = new ArrayList();
+    private final ArrayList<NdefRecord> NFCRecords = new ArrayList();
     private String groupName = "";
+    final Context context = this;
+    private AlertDialog alertDialog;
+    private Button addButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +57,17 @@ public class ShareGroupActivity extends Activity {
             groupName = extras.getString("groupName");
             groupCreate();//creates fake group of all people on your phone
             groupRetriever();
+            dialogCreate();
+
+            //----------start of buttons-----
+            addButton = (Button) findViewById(R.id.addPerson);
+            addButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View arg0) {
+                    alertDialog.show();
+                }
+            });
+
             text1.setText(user.get(0) + " welcome \n\tto " + groupName + "!");
 
             mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -66,15 +85,53 @@ public class ShareGroupActivity extends Activity {
         }
     }
 
+    public void dialogCreate() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder
+                .setTitle("Select Members")
+                // Specify the list array, the items to be selected by default (null for none),
+                // and the listener through which to receive callbacks when items are selected
+                .setMultiChoiceItems(user.toArray(new String[user.size()]), null,
+                        new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which,
+                                    boolean isChecked) {
+                                if (isChecked) {
+                                    // If the user checked the item, add it to the selected items
+                                    mSelectedItems.add(which);
+                                } else if (mSelectedItems.contains(which)) {
+                                    // Else, if the item is already in the array, remove it 
+                                    mSelectedItems.remove(Integer.valueOf(which));
+                                }
+                            }
+                        })
+                // Set the action buttons
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked OK, so save the mSelectedItems results somewhere
+                        // or return them to the component that opened the dialog
+                        //...
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        //...
+                    }
+                });
+
+        alertDialog = alertDialogBuilder.create();
+    }
+
     public void groupCreate() {
         try {
             FileOutputStream fs = openFileOutput("CMG" + groupName, Context.MODE_PRIVATE);
             OutputStreamWriter ow = new OutputStreamWriter(fs);
             BufferedWriter writer = new BufferedWriter(ow);
             peopleRetriever();
-            
-            for(int i = 0; i < user.size(); i++)
-            {   //user
+
+            for (int i = 0; i < user.size(); i++) {   //user
                 writer.write(user.get(i));
                 writer.newLine();
                 writer.write(sched.get(i));
@@ -83,7 +140,8 @@ public class ShareGroupActivity extends Activity {
 
             writer.flush();
             writer.close();
-        } catch (Exception e) {}
+        } catch (IOException e) {
+        }
     }
 
     public boolean groupRetriever() {
@@ -134,7 +192,9 @@ public class ShareGroupActivity extends Activity {
             try {
                 Scanner in = new Scanner(file);
                 user.add(file.getName().substring(3));
-                while (in.hasNextLine()){sched.add(in.nextLine());}
+                while (in.hasNextLine()) {
+                    sched.add(in.nextLine());
+                }
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(LoginActivity.class.getName()).log(Level.SEVERE, null, ex);
             }
