@@ -34,6 +34,8 @@ public class ShareGroupActivity extends Activity {
     private TextView view;
     private NfcAdapter mNfcAdapter;
     private NdefMessage mNdefMessage;
+    private final ArrayList<String> userAdded = new ArrayList();
+    private final ArrayList<String> schedAdded = new ArrayList();
     private final ArrayList<Integer> mSelectedItems = new ArrayList();
     private final ArrayList<String> user = new ArrayList();
     private final ArrayList<String> sched = new ArrayList();
@@ -55,11 +57,15 @@ public class ShareGroupActivity extends Activity {
 
         if (login() && (extras != null)) {
             groupName = extras.getString("groupName");
-            groupCreate();//creates fake group of all people on your phone
+            
             groupRetriever();
-            dialogCreate();
+            peopleRetriever();
+            
+            for(String indUser : userAdded)
+                view.append(indUser);
 
             //----------start of buttons-----
+            dialogCreate();
             addButton = (Button) findViewById(R.id.addPerson);
             addButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -109,9 +115,16 @@ public class ShareGroupActivity extends Activity {
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        // User clicked OK, so save the mSelectedItems results somewhere
-                        // or return them to the component that opened the dialog
-                        //...
+                        for(int i : mSelectedItems)
+                        {
+                            userAdded.add(user.get(i));
+                            schedAdded.add(sched.get(i));
+                        }
+                        
+                        view.setText("Group Members\n");
+                        for(String indUser : userAdded)
+                            view.append(indUser+"\n");
+                        groupCreate();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -129,12 +142,11 @@ public class ShareGroupActivity extends Activity {
             FileOutputStream fs = openFileOutput("CMG" + groupName, Context.MODE_PRIVATE);
             OutputStreamWriter ow = new OutputStreamWriter(fs);
             BufferedWriter writer = new BufferedWriter(ow);
-            peopleRetriever();
 
-            for (int i = 0; i < user.size(); i++) {   //user
-                writer.write(user.get(i));
+            for (int i = 0; i < userAdded.size(); i++) {   //user
+                writer.write(userAdded.get(i));
                 writer.newLine();
-                writer.write(sched.get(i));
+                writer.write(schedAdded.get(i));
                 writer.newLine();
             }
 
@@ -144,31 +156,21 @@ public class ShareGroupActivity extends Activity {
         }
     }
 
-    public boolean groupRetriever() {
+    public boolean groupRetriever() 
+    {
         view.setText("Group Members\n");
-        File root = getFilesDir();
 
-        FilenameFilter beginswithm = new FilenameFilter() {
-            public boolean accept(File directory, String filename) {
-                return filename.startsWith("CMG");
-            }
-        };
-
-        File[] files = root.listFiles(beginswithm);
-
-        if (files.length == 0) {
-            return false;
-        }
-        try (FileInputStream file = openFileInput("CMG" + groupName)) {
+        try (FileInputStream file = openFileInput("CMG" + groupName)) 
+        {
             Scanner in = new Scanner(file);
 
-            while (in.hasNextLine()) {
-                this.view.append(in.nextLine() + "\n");//personID
-                in.nextLine();// this.view.append(in.nextLine()+"\n");//schedule
+            while (in.hasNextLine()) 
+            {
+                userAdded.add(in.nextLine() + "\n");
+                schedAdded.add(in.nextLine());
             }
-        } catch (Exception ex) {
-            Logger.getLogger(LoginActivity.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (Exception e) {return false;}
+        
         return true;
     }
 
