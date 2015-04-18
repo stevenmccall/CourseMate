@@ -118,8 +118,11 @@ public class ShareGroupActivity extends Activity {
                     public void onClick(DialogInterface dialog, int id) {
                         for(int i : mSelectedItems)
                         {
-                            userAdded.add(user.get(i));
-                            schedAdded.add(sched.get(i));
+                            if(!userAdded.contains(user.get(i)))
+                            {
+                                userAdded.add(user.get(i));
+                                schedAdded.add(sched.get(i));
+                            }
                         }
                         
                         view.setText("Group Members\n");
