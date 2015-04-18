@@ -9,9 +9,6 @@
           android:color="#2f6499" />
       <corners
           android:radius="6sp" />
-      <padding
-          android:left="10sp"
-          android:right="10sp" />
     </shape>
   </item>
   <item>
@@ -25,9 +22,6 @@
           android:color="#2f6499" />
       <corners
           android:radius="6sp" />
-      <padding
-          android:left="10sp"
-          android:right="10sp" />
     </shape>
   </item>
 </selector>

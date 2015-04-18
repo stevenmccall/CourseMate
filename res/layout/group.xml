@@ -11,12 +11,13 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_centerHorizontal="true"
-                  android:orientation="vertical" 
+                  android:orientation="horizontal" 
+                  android:paddingBottom="3sp"
                   android:id="@+id/header">
         <Button
             android:background="@drawable/blue_button"
             android:id="@+id/addGroup"
-            android:layout_width="300sp"
+            android:layout_width="265sp"
             android:layout_height="50sp"
             android:text="+ Add Group" 
             style="@style/button_text"
@@ -24,13 +25,13 @@
         />
         <Button
             android:background="@drawable/blue_button"
+            android:drawableStart="@drawable/nfc_logo32x32"
             android:id="@+id/passSched"
-            android:layout_width="wrap_content"
-            android:layout_height="25sp"
-            android:layout_gravity="right"
-            android:text="Share Schedule" 
-            style="@style/button_text"
-            android:textSize="15sp"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:paddingTop="2sp"
+            android:paddingLeft="12sp"
+            style="@style/button_text"  
         />
     </LinearLayout>    
     <Button
