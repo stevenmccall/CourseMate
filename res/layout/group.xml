@@ -46,7 +46,7 @@
     />
     <ListView
         android:id="@+id/list1"
-        android:layout_width="300sp"
+        android:layout_width="320sp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"     
         android:divider="#d9d9d9"

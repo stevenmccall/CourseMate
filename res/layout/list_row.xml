@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="300sp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/list_row_selector"
                 android:padding="8sp" 
@@ -13,6 +13,16 @@
         android:layout_width="50sp"
         android:layout_height="50sp"
         android:paddingRight="10sp"
+        android:layout_centerVertical="true"
+    />
+    
+    <ImageView
+        android:contentDescription="tempImg"
+        android:id="@+id/next"
+        android:src="@drawable/arrow"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
     />
 
@@ -32,6 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/groupName"
         android:layout_marginTop="1dip"
+        android:layout_toLeftOf="@+id/next"
         android:layout_toRightOf="@+id/thumbnail"
         android:textSize="15sp" />
     
@@ -44,15 +55,4 @@
         android:layout_toRightOf="@+id/thumbnail"
         android:textColor="#666666"
         android:textSize="13sp" />
-    
-    <ImageView
-        android:contentDescription="tempImg"
-        android:id="@+id/next"
-        android:src="@drawable/arrow"
-        android:layout_width="25sp"
-        android:layout_height="25sp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-    />
-
 </RelativeLayout>
