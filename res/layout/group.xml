@@ -12,15 +12,15 @@
                   android:layout_height="wrap_content"
                   android:layout_centerHorizontal="true"
                   android:orientation="horizontal" 
-                  android:paddingBottom="3sp"
                   android:id="@+id/header">
         <Button
             android:background="@drawable/blue_button"
             android:id="@+id/addGroup"
-            android:layout_width="265sp"
+            android:layout_width="270sp"
             android:layout_height="50sp"
             android:text="+ Add Group" 
             style="@style/button_text"
+            android:paddingTop="6sp"
             android:textSize="15sp"
         />
         <Button
@@ -29,9 +29,7 @@
             android:id="@+id/passSched"
             android:layout_width="50sp"
             android:layout_height="50sp"
-            android:paddingTop="2sp"
             android:paddingLeft="12sp"
-            style="@style/button_text"  
         />
     </LinearLayout>    
     <Button

@@ -13,7 +13,7 @@
         <Button
             android:background="@drawable/blue_button"
             android:id="@+id/addPerson"
-            android:layout_width="300sp"
+            android:layout_width="fill_parent"
             android:layout_height="50sp"
             android:text="+ Add Group Member" 
             style="@style/button_text"
