@@ -17,19 +17,21 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import com.txstatecs4398.coursemate.meetingshared.Person;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Scanner;
 
 /**
  *
@@ -38,10 +40,11 @@ import java.util.ArrayList;
 public class GroupSelectionActivity extends Activity {
 
     final Context context = this;
-    private TextView view;
     private ListView list;
-    private ArrayList<String> groupList = new ArrayList<String>();
-    private ArrayAdapter<String> listAdapter ;  
+    private final ArrayList<String> groupList = new ArrayList<>();
+    private final ArrayList<String> groupDate = new ArrayList<>();
+    private final ArrayList<String> groupNames = new ArrayList<>();
+    private CustomListAdapter listAdapter ;  
     private Button addButton;
     private Button logoutButton;
     private Button shareButton;
@@ -59,32 +62,19 @@ public class GroupSelectionActivity extends Activity {
         setContentView(R.layout.group);
         Bundle extras = getIntent().getExtras();
 
-        view = (TextView) findViewById(R.id.text1);
         list = (ListView) findViewById(R.id.list1);
-        view.setVisibility(View.GONE);
         // end of view setup code
 
         if (extras != null) {
             nfcNetID = extras.getString("nfcNetID");
             nfcSched = extras.getString("nfcSched");
-            //start of group setup //copy commented out code to group activity.
-            //GroupSchedule temp = new GroupSchedule();
-            //start of adding person
             Person tempPerson = new Person(nfcNetID);
             tempPerson.nfcParse(nfcSched);
             personCreate(tempPerson);
-
-            // temp.AddPerson(tempPerson);
-            //start of displaying storage
-            //for(Person person : temp.returnStorage())
-            //{
-            //    view.append(person.getNetID()+"\n"+person.showSched()+"\n\n");
-            //}
         }
         //----------Start of Group Processing--------------
-        ///*
         if (groupRetriever()) {
-            listAdapter = new ArrayAdapter<String>(this, R.layout.list_row, groupList);  
+            listAdapter = new CustomListAdapter(this, groupList, groupDate, groupNames);  
             list.setAdapter(listAdapter);
 
             list.setOnItemClickListener(new OnItemClickListener() 
@@ -93,11 +83,11 @@ public class GroupSelectionActivity extends Activity {
                         int position, long id) 
                 {
                     Intent intent = new Intent(GroupSelectionActivity.this, ShareGroupActivity.class);
-                    intent.putExtra("groupName", ((TextView) view).getText());
+                    intent.putExtra("groupName", groupList.get(position));
                     startActivity(intent);
                 }
-            });
-        }//*/
+            });list.setAdapter(listAdapter);
+        }
 
         //----------start of buttons-----
         shareButton = (Button) findViewById(R.id.passSched);
@@ -172,8 +162,20 @@ public class GroupSelectionActivity extends Activity {
             FileOutputStream fs = openFileOutput("CMG" + filename, Context.MODE_PRIVATE);
             OutputStreamWriter ow = new OutputStreamWriter(fs);
             BufferedWriter writer = new BufferedWriter(ow);
+            
+            Calendar now = Calendar.getInstance();
+            int date = now.get(Calendar.MONTH) + 1;
+            String year = Integer.toString(now.get(Calendar.YEAR) + 1);
+            
+            if(date >= 1 && date < 6){writer.write("Spring "+year);}
+            else if(date >= 6 && date < 8){writer.write("Summer "+year);}
+            else{writer.write("Fall "+year);}
+            
             writer.flush();
             writer.close();
+            
+            finish();
+            startActivity(getIntent());
         } catch (IOException e) {
             return false;
         }
@@ -196,8 +198,8 @@ public class GroupSelectionActivity extends Activity {
         return true;
     }
 
-    public boolean groupRetriever() {
-        view.setText("");
+    public boolean groupRetriever() 
+    {
         File root = getFilesDir();
 
         FilenameFilter beginswithm = new FilenameFilter() {
@@ -215,7 +217,20 @@ public class GroupSelectionActivity extends Activity {
         groupList.clear();
         for (File file : files) 
         {
-            groupList.add(file.getName().substring(3));
+            try {
+                FileInputStream stream = openFileInput(file.getName());
+                Scanner in = new Scanner(stream);
+                groupList.add(file.getName().substring(3));
+                groupDate.add(in.nextLine());
+                String name = "";
+                while (in.hasNextLine()) 
+                {
+                    name += in.nextLine()+" ";
+                    in.nextLine();
+                }
+                groupNames.add(name);
+            } catch (FileNotFoundException ex) {}
+            
         }
         return true;
     }

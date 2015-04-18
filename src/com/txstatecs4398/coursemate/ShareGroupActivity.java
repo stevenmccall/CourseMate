@@ -41,6 +41,7 @@ public class ShareGroupActivity extends Activity {
     private final ArrayList<String> sched = new ArrayList();
     private final ArrayList<NdefRecord> NFCRecords = new ArrayList();
     private String groupName = "";
+    private String groupDate = "";
     final Context context = this;
     private AlertDialog alertDialog;
     private Button addButton;
@@ -144,6 +145,8 @@ public class ShareGroupActivity extends Activity {
             OutputStreamWriter ow = new OutputStreamWriter(fs);
             BufferedWriter writer = new BufferedWriter(ow);
 
+            writer.write(groupDate);
+            writer.newLine();
             for (int i = 0; i < userAdded.size(); i++) {   //user
                 writer.write(userAdded.get(i));
                 writer.newLine();
@@ -163,6 +166,7 @@ public class ShareGroupActivity extends Activity {
         try (FileInputStream file = openFileInput("CMG" + groupName)) 
         {
             Scanner in = new Scanner(file);
+            groupDate = in.nextLine();
 
             while (in.hasNextLine()) 
             {
