@@ -1,15 +1,15 @@
-# view AndroidManifest.xml #generated:20
+# view AndroidManifest.xml #generated:19
 -keep class com.txstatecs4398.coursemate.GroupSelectionActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:29
+# view AndroidManifest.xml #generated:28
 -keep class com.txstatecs4398.coursemate.HtmlLoaderActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:35
+# view AndroidManifest.xml #generated:34
 -keep class com.txstatecs4398.coursemate.LoginActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:15
 -keep class com.txstatecs4398.coursemate.ShareGroupActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:24
+# view AndroidManifest.xml #generated:23
 -keep class com.txstatecs4398.coursemate.SharePersonActivity { <init>(...); }
 

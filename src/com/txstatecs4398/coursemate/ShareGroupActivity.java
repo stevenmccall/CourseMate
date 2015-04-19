@@ -9,6 +9,9 @@ import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -44,12 +47,10 @@ public class ShareGroupActivity extends Activity {
     private String groupDate = "";
     final Context context = this;
     private AlertDialog alertDialog;
-    private Button addButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.share_group);
         Bundle extras = getIntent().getExtras();
 
@@ -64,16 +65,6 @@ public class ShareGroupActivity extends Activity {
             
             for(String indUser : userAdded)
                 view.append(indUser+"\n");
-
-            //----------start of buttons-----
-            dialogCreate();
-            addButton = (Button) findViewById(R.id.addPerson);
-            addButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View arg0) {
-                    alertDialog.show();
-                }
-            });
 
             text1.setText(user.get(0) + " welcome \n\tto " + groupName + "!");
 
@@ -139,6 +130,37 @@ public class ShareGroupActivity extends Activity {
                 });
 
         alertDialog = alertDialogBuilder.create();
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.share_group_activity_actions, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_add_person:
+                dialogCreate();
+                alertDialog.show();
+                return true;
+            case R.id.action_delete:
+                deleteFile("CMG"+groupName);
+                intent = new Intent(getApplicationContext(), LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                return true;
+            case R.id.action_settings:
+                //openSettings();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void groupCreate() 

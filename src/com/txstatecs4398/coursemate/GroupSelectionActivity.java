@@ -17,10 +17,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import com.txstatecs4398.coursemate.meetingshared.Person;
@@ -48,9 +46,6 @@ public class GroupSelectionActivity extends Activity {
     private final ArrayList<String> groupDate = new ArrayList<>();
     private final ArrayList<String> groupNames = new ArrayList<>();
     private CustomListAdapter listAdapter;
-    private Button addButton;
-    private Button logoutButton;
-    private Button shareButton;
     private String nfcNetID;
     private String nfcSched;
     private AlertDialog alertDialog;
@@ -90,54 +85,32 @@ public class GroupSelectionActivity extends Activity {
             });
             list.setAdapter(listAdapter);
         }
-
-        //----------start of buttons-----
-        shareButton = (Button) findViewById(R.id.passSched);
-        shareButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Intent intent = new Intent(GroupSelectionActivity.this, SharePersonActivity.class);
-                startActivity(intent);
-            }
-        });
-/*
-        logoutButton = (Button) findViewById(R.id.logout);
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                deleteFile("user");
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-            }
-        });
-*/
-        // add button listener
-        addButton = (Button) findViewById(R.id.addGroup);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                dialogCreate();
-                alertDialog.show();
-            }
-        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_activity_actions, menu);
+        inflater.inflate(R.menu.share_person_activity_actions, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
+        Intent intent;
         switch (item.getItemId()) {
+            case R.id.action_add_group:
+                dialogCreate();
+                alertDialog.show();
+                return true;
+            case R.id.action_share:
+                intent = new Intent(getApplicationContext(), SharePersonActivity.class);
+                startActivity(intent);
+                return true;
             case R.id.action_logout:
                 deleteFile("user");
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                intent = new Intent(getApplicationContext(), LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 return true;

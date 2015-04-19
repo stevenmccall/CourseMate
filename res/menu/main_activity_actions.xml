@@ -1,9 +1,0 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <!-- Search, should appear as action button -->
-    <item android:id="@+id/action_logout"
-          android:icon="@drawable/supercat"
-          android:title="Logout" />
-    <!-- Settings, should always be in the overflow -->
-    <item android:id="@+id/action_settings"
-          android:title="Settings" />
-</menu>

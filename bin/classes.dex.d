@@ -5,8 +5,6 @@ C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstate
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\GroupSelectionActivity$2.class \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\GroupSelectionActivity$3.class \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\GroupSelectionActivity$4.class \
-C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\GroupSelectionActivity$5.class \
-C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\GroupSelectionActivity$6.class \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\GroupSelectionActivity.class \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\HtmlLoaderActivity$1.class \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\HtmlLoaderActivity$2.class \
@@ -32,7 +30,6 @@ C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstate
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\ShareGroupActivity$2.class \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\ShareGroupActivity$3.class \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\ShareGroupActivity$4.class \
-C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\ShareGroupActivity$5.class \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\ShareGroupActivity.class \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\SharePersonActivity$1.class \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\SharePersonActivity.class \

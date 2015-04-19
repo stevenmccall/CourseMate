@@ -6,41 +6,13 @@
               android:paddingTop="10sp"
               android:paddingBottom="10sp"
               android:orientation="vertical" >
- 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="330sp"
-                  android:layout_height="wrap_content"
-                  android:layout_centerHorizontal="true"
-                  android:orientation="horizontal" 
-                  android:layout_marginBottom="5sp"
-                  android:id="@+id/header">
-        <Button
-            android:background="@drawable/blue_button"
-            android:id="@+id/addGroup"
-            android:layout_width="270sp"
-            android:layout_height="50sp"
-            android:text="+ Add Group" 
-            style="@style/button_text"            
-            android:textSize="15sp"
-        />
-        <Button
-            android:background="@drawable/blue_button"
-            android:drawableStart="@drawable/nfc_logo32x32"
-            android:id="@+id/passSched"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:layout_marginTop="4sp"
-            android:paddingLeft="12sp"
-        />
-    </LinearLayout>
     <ListView
         android:id="@+id/list1"
-        android:layout_width="320sp"
+        android:layout_width="340sp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"     
         android:divider="#d9d9d9"
         android:dividerHeight="1dp"
         android:listSelector="@drawable/list_row_selector"
-        android:layout_below="@id/header"
     />
 </RelativeLayout>
