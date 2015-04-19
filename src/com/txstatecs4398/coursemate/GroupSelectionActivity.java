@@ -13,6 +13,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -44,7 +47,7 @@ public class GroupSelectionActivity extends Activity {
     private final ArrayList<String> groupList = new ArrayList<>();
     private final ArrayList<String> groupDate = new ArrayList<>();
     private final ArrayList<String> groupNames = new ArrayList<>();
-    private CustomListAdapter listAdapter ;  
+    private CustomListAdapter listAdapter;
     private Button addButton;
     private Button logoutButton;
     private Button shareButton;
@@ -58,7 +61,7 @@ public class GroupSelectionActivity extends Activity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.group);
         Bundle extras = getIntent().getExtras();
 
@@ -74,19 +77,18 @@ public class GroupSelectionActivity extends Activity {
         }
         //----------Start of Group Processing--------------
         if (groupRetriever()) {
-            listAdapter = new CustomListAdapter(this, groupList, groupDate, groupNames);  
+            listAdapter = new CustomListAdapter(this, groupList, groupDate, groupNames);
             list.setAdapter(listAdapter);
 
-            list.setOnItemClickListener(new OnItemClickListener() 
-            {
+            list.setOnItemClickListener(new OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View view,
-                        int position, long id) 
-                {
+                        int position, long id) {
                     Intent intent = new Intent(GroupSelectionActivity.this, ShareGroupActivity.class);
                     intent.putExtra("groupName", groupList.get(position));
                     startActivity(intent);
                 }
-            });list.setAdapter(listAdapter);
+            });
+            list.setAdapter(listAdapter);
         }
 
         //----------start of buttons-----
@@ -98,7 +100,7 @@ public class GroupSelectionActivity extends Activity {
                 startActivity(intent);
             }
         });
-
+/*
         logoutButton = (Button) findViewById(R.id.logout);
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +111,7 @@ public class GroupSelectionActivity extends Activity {
                 startActivity(intent);
             }
         });
-
+*/
         // add button listener
         addButton = (Button) findViewById(R.id.addGroup);
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +121,32 @@ public class GroupSelectionActivity extends Activity {
                 alertDialog.show();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_activity_actions, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.action_logout:
+                deleteFile("user");
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                return true;
+            case R.id.action_settings:
+                //openSettings();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void dialogCreate() {
@@ -162,18 +190,22 @@ public class GroupSelectionActivity extends Activity {
             FileOutputStream fs = openFileOutput("CMG" + filename, Context.MODE_PRIVATE);
             OutputStreamWriter ow = new OutputStreamWriter(fs);
             BufferedWriter writer = new BufferedWriter(ow);
-            
+
             Calendar now = Calendar.getInstance();
             int date = now.get(Calendar.MONTH) + 1;
             String year = Integer.toString(now.get(Calendar.YEAR) + 1);
-            
-            if(date >= 1 && date < 6){writer.write("Spring "+year);}
-            else if(date >= 6 && date < 8){writer.write("Summer "+year);}
-            else{writer.write("Fall "+year);}
-            
+
+            if (date >= 1 && date < 6) {
+                writer.write("Spring " + year);
+            } else if (date >= 6 && date < 8) {
+                writer.write("Summer " + year);
+            } else {
+                writer.write("Fall " + year);
+            }
+
             writer.flush();
             writer.close();
-            
+
             finish();
             startActivity(getIntent());
         } catch (IOException e) {
@@ -198,8 +230,7 @@ public class GroupSelectionActivity extends Activity {
         return true;
     }
 
-    public boolean groupRetriever() 
-    {
+    public boolean groupRetriever() {
         File root = getFilesDir();
 
         FilenameFilter beginswithm = new FilenameFilter() {
@@ -213,24 +244,23 @@ public class GroupSelectionActivity extends Activity {
         if (files.length == 0) {
             return false;
         }
-        
+
         groupList.clear();
-        for (File file : files) 
-        {
+        for (File file : files) {
             try {
                 FileInputStream stream = openFileInput(file.getName());
                 Scanner in = new Scanner(stream);
                 groupList.add(file.getName().substring(3));
                 groupDate.add(in.nextLine());
                 String name = "";
-                while (in.hasNextLine()) 
-                {
-                    name += in.nextLine()+" ";
+                while (in.hasNextLine()) {
+                    name += in.nextLine() + " ";
                     in.nextLine();
                 }
                 groupNames.add(name);
-            } catch (FileNotFoundException ex) {}
-            
+            } catch (FileNotFoundException ex) {
+            }
+
         }
         return true;
     }

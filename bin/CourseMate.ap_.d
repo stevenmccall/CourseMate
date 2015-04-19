@@ -20,6 +20,7 @@ C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\layout\list_row.xml
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\layout\login.xml \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\layout\share_group.xml \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\layout\share_person.xml \
+C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\menu\main_activity_actions.xml \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\values\colors.xml \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\values\strings.xml \
 C:\Users\theoj_000\Documents\NetBeansProjects\CourseMate\res\values\styles.xml \
