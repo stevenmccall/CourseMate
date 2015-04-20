@@ -173,8 +173,10 @@ public class GroupSelectionActivity extends Activity {
                                 if (!userInput.getText().toString().isEmpty()) {
                                     if (groupCreate(userInput.getText().toString())) {
                                         groupRetriever();
-                                        if(listAdapter != null)
-                                            listAdapter.notifyDataSetChanged();
+                                        
+                                        Intent intent = new Intent(getApplicationContext(), GroupSelectionActivity.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
                                 }
                             }
