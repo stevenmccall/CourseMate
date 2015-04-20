@@ -86,7 +86,17 @@ public class GroupSelectionActivity extends Activity {
                     startActivity(intent);
                 }
             });
-            list.setAdapter(listAdapter);
+            
+            list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() 
+            {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    deleteFile("CMG"+groupList.get(position));
+                    groupList.remove(position);
+                    listAdapter.notifyDataSetChanged();
+                    return true;
+                }
+            });
         }
         
         group.setOnClickListener(new View.OnClickListener() 
@@ -157,6 +167,7 @@ public class GroupSelectionActivity extends Activity {
                                 if (!userInput.getText().toString().isEmpty()) {
                                     if (groupCreate(userInput.getText().toString())) {
                                         groupRetriever();
+                                        listAdapter.notifyDataSetChanged();
                                     }
                                 }
                             }

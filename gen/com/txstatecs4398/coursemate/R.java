@@ -36,39 +36,41 @@ public final class R {
         public static final int supercat=0x7f020010;
     }
     public static final class id {
-        public static final int action_add_group=0x7f090015;
-        public static final int action_add_person=0x7f090012;
-        public static final int action_delete=0x7f090013;
-        public static final int action_logout=0x7f090017;
-        public static final int action_settings=0x7f090014;
-        public static final int action_share=0x7f090016;
-        public static final int buttonUrl=0x7f09000d;
+        public static final int action_add_group=0x7f090016;
+        public static final int action_add_person=0x7f090013;
+        public static final int action_delete=0x7f090014;
+        public static final int action_logout=0x7f090018;
+        public static final int action_settings=0x7f090015;
+        public static final int action_share=0x7f090017;
+        public static final int buttonUrl=0x7f09000e;
         public static final int calendar1=0x7f090011;
-        public static final int groupMembers=0x7f090007;
-        public static final int groupName=0x7f090006;
-        public static final int image1=0x7f090000;
-        public static final int image2=0x7f09000a;
-        public static final int list1=0x7f090002;
-        public static final int next=0x7f090005;
-        public static final int password1=0x7f09000c;
-        public static final int semester=0x7f090008;
-        public static final int text1=0x7f090009;
-        public static final int text2=0x7f09000f;
-        public static final int text3=0x7f090010;
-        public static final int textview1=0x7f09000e;
-        public static final int thumbnail=0x7f090004;
-        public static final int userGroup=0x7f090001;
-        public static final int username1=0x7f09000b;
-        public static final int webView1=0x7f090003;
+        public static final int delete=0x7f090001;
+        public static final int groupMembers=0x7f090008;
+        public static final int groupName=0x7f090002;
+        public static final int header=0x7f090010;
+        public static final int image1=0x7f090003;
+        public static final int image2=0x7f09000b;
+        public static final int list1=0x7f090005;
+        public static final int next=0x7f090007;
+        public static final int password1=0x7f09000d;
+        public static final int semester=0x7f090009;
+        public static final int text1=0x7f09000a;
+        public static final int text2=0x7f090012;
+        public static final int textview1=0x7f09000f;
+        public static final int thumbnail=0x7f090000;
+        public static final int userGroup=0x7f090004;
+        public static final int username1=0x7f09000c;
+        public static final int webView1=0x7f090006;
     }
     public static final class layout {
-        public static final int dialog=0x7f030000;
-        public static final int group=0x7f030001;
-        public static final int html_loader=0x7f030002;
-        public static final int list_row=0x7f030003;
-        public static final int login=0x7f030004;
-        public static final int share_group=0x7f030005;
-        public static final int share_person=0x7f030006;
+        public static final int deleter_list_row=0x7f030000;
+        public static final int dialog=0x7f030001;
+        public static final int group=0x7f030002;
+        public static final int html_loader=0x7f030003;
+        public static final int list_row=0x7f030004;
+        public static final int login=0x7f030005;
+        public static final int share_group=0x7f030006;
+        public static final int share_person=0x7f030007;
     }
     public static final class menu {
         public static final int share_group_activity_actions=0x7f080000;

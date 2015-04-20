@@ -13,9 +13,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,8 +33,6 @@ import java.util.logging.Logger;
 
 public class ShareGroupActivity extends Activity {
 
-    private TextView text1;
-    private TextView view;
     private NfcAdapter mNfcAdapter;
     private NdefMessage mNdefMessage;
     private final ArrayList<String> userAdded = new ArrayList();
@@ -47,6 +45,8 @@ public class ShareGroupActivity extends Activity {
     private String groupDate = "";
     final Context context = this;
     private AlertDialog alertDialog;
+    private ListView list;
+    private DeleterCustomListAdapter listAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,25 +54,29 @@ public class ShareGroupActivity extends Activity {
         setContentView(R.layout.share_group);
         Bundle extras = getIntent().getExtras();
 
-        text1 = (TextView) findViewById(R.id.text2);
-        view = (TextView) findViewById(R.id.text3);
-
         if (login() && (extras != null)) {
             groupName = extras.getString("groupName");
             
-            groupRetriever();
-            peopleRetriever();
+            list = (ListView) findViewById(R.id.list1);
             
-            for(String indUser : userAdded)
-                view.append(indUser+"\n");
-
-            text1.setText(user.get(0) + " welcome \n\tto " + groupName + "!");
+            groupRetriever();//gets all the people in the current group
+            peopleRetriever();//gets all the people that could be added to the group
+            
+            listAdapter = new DeleterCustomListAdapter(this, userAdded);
+            list.setAdapter(listAdapter);
+            
+            list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() 
+            {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    userAdded.remove(position);
+                    groupCreate();
+                    listAdapter.notifyDataSetChanged();
+                    return true;
+                }
+            });
 
             mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
-
-            if (mNfcAdapter == null) {
-                text1.append("This phone is not NFC enabled.");
-            }
 
             NFCRecords.add(createNewTextRecord(user.get(0), Locale.ENGLISH, true));
             NFCRecords.add(createNewTextRecord(sched.get(0), Locale.ENGLISH, true));
@@ -115,11 +119,8 @@ public class ShareGroupActivity extends Activity {
                                 schedAdded.add(sched.get(i));
                             }
                         }
-                        
-                        view.setText("Group Members\n");
-                        for(String indUser : userAdded)
-                            view.append(indUser+"\n");
                         groupCreate();
+                        listAdapter.notifyDataSetChanged();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -186,8 +187,6 @@ public class ShareGroupActivity extends Activity {
 
     public boolean groupRetriever() 
     {
-        view.setText("Group Members\n");
-
         try (FileInputStream file = openFileInput("CMG" + groupName)) 
         {
             Scanner in = new Scanner(file);
@@ -203,8 +202,7 @@ public class ShareGroupActivity extends Activity {
         return true;
     }
 
-    public boolean peopleRetriever() {//this will go in new Activity for group member selection
-        view.setText("Group Members\n");
+    public boolean peopleRetriever() {
         File root = getFilesDir();
 
         FilenameFilter beginswithm = new FilenameFilter() {
