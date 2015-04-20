@@ -46,7 +46,7 @@ public class GroupSelectionActivity extends Activity {
     private final ArrayList<String> groupList = new ArrayList<>();
     private final ArrayList<String> groupDate = new ArrayList<>();
     private final ArrayList<String> groupNames = new ArrayList<>();
-    private CustomListAdapter listAdapter;
+    private CustomListAdapter listAdapter = null;
     private String nfcNetID;
     private String nfcSched;
     private AlertDialog alertDialog;
@@ -79,6 +79,7 @@ public class GroupSelectionActivity extends Activity {
             list.setAdapter(listAdapter);
             
             list.setOnItemClickListener(new OnItemClickListener() {
+                @Override
                 public void onItemClick(AdapterView<?> parent, View view,
                         int position, long id) {
                     Intent intent = new Intent(GroupSelectionActivity.this, ShareGroupActivity.class);
@@ -94,6 +95,9 @@ public class GroupSelectionActivity extends Activity {
                     deleteFile("CMG"+groupList.get(position));
                     groupList.remove(position);
                     listAdapter.notifyDataSetChanged();
+                    
+                    if(groupList.isEmpty())
+                        group.setVisibility(View.VISIBLE);
                     return true;
                 }
             });
@@ -163,17 +167,20 @@ public class GroupSelectionActivity extends Activity {
                 .setCancelable(false)
                 .setPositiveButton("OK",
                         new DialogInterface.OnClickListener() {
+                            @Override
                             public void onClick(DialogInterface dialog, int id) {
                                 if (!userInput.getText().toString().isEmpty()) {
                                     if (groupCreate(userInput.getText().toString())) {
                                         groupRetriever();
-                                        listAdapter.notifyDataSetChanged();
+                                        if(listAdapter != null)
+                                            listAdapter.notifyDataSetChanged();
                                     }
                                 }
                             }
                         })
                 .setNegativeButton("Cancel",
                         new DialogInterface.OnClickListener() {
+                            @Override
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
                             }
@@ -190,7 +197,7 @@ public class GroupSelectionActivity extends Activity {
             
             Calendar now = Calendar.getInstance();
             int date = now.get(Calendar.MONTH) + 1;
-            String year = Integer.toString(now.get(Calendar.YEAR) + 1);
+            String year = Integer.toString(now.get(Calendar.YEAR));
             
             if (date >= 1 && date < 6) {
                 writer.write("Spring " + year);
@@ -231,6 +238,7 @@ public class GroupSelectionActivity extends Activity {
         File root = getFilesDir();
         
         FilenameFilter beginswithm = new FilenameFilter() {
+            @Override
             public boolean accept(File directory, String filename) {
                 return filename.startsWith("CMG");
             }
