@@ -1,6 +1,5 @@
 package com.txstatecs4398.coursemate;
 
-import com.txstatecs4398.coursemate.collections.list_adapters.PersonCustomListAdapter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -16,6 +15,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import com.txstatecs4398.coursemate.collections.Group;
+import com.txstatecs4398.coursemate.collections.Person;
+import com.txstatecs4398.coursemate.collections.list_adapters.PersonCustomListAdapter;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,21 +34,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ShareGroupActivity extends Activity {
-
+    private final Context context = this;    
     private NfcAdapter mNfcAdapter;
     private NdefMessage mNdefMessage;
+    private final ArrayList<NdefRecord> NFCRecords = new ArrayList();    
     private final ArrayList<String> userAdded = new ArrayList();
-    private final ArrayList<String> schedAdded = new ArrayList();
-    private final ArrayList<Integer> mSelectedItems = new ArrayList();
+    private final ArrayList<String> schedAdded = new ArrayList();    
     private final ArrayList<String> user = new ArrayList();
-    private final ArrayList<String> sched = new ArrayList();
-    private final ArrayList<NdefRecord> NFCRecords = new ArrayList();
+    private final ArrayList<String> sched = new ArrayList();        
     private String groupName = "";
-    private String groupDate = "";
-    final Context context = this;
-    private AlertDialog alertDialog;
+    private String groupDate = "";    
+    private AlertDialog alertDialog;    
     private ListView list;
     private PersonCustomListAdapter listAdapter;
+    private final ArrayList<Integer> mSelectedItems = new ArrayList();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,7 @@ public class ShareGroupActivity extends Activity {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                     userAdded.remove(position);
+                    schedAdded.remove(position);
                     groupCreate();
                     listAdapter.notifyDataSetChanged();
                     return true;
@@ -85,6 +87,19 @@ public class ShareGroupActivity extends Activity {
         } else {
             finish();
         }
+    }
+    
+    public Group groupCollectionMake()
+    {
+        Group userGroup = new Group();
+        
+        for(int i = 0; i < userAdded.size(); i++)
+        {
+            Person temp = new Person(userAdded.get(i));
+            temp.nfcParse(schedAdded.get(i));
+            userGroup.AddPerson(temp);
+        }
+        return userGroup;
     }
 
     public void dialogCreate() {
@@ -144,17 +159,11 @@ public class ShareGroupActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
-        Intent intent;
+        //Intent intent;
         switch (item.getItemId()) {
             case R.id.action_add_person:
                 dialogCreate();
                 alertDialog.show();
-                return true;
-            case R.id.action_delete:
-                deleteFile("CMG"+groupName);
-                intent = new Intent(getApplicationContext(), LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
                 return true;
             case R.id.action_settings:
                 //openSettings();

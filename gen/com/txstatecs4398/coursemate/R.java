@@ -36,12 +36,11 @@ public final class R {
         public static final int supercat=0x7f020010;
     }
     public static final class id {
-        public static final int action_add_group=0x7f090016;
+        public static final int action_add_group=0x7f090015;
         public static final int action_add_person=0x7f090013;
-        public static final int action_delete=0x7f090014;
-        public static final int action_logout=0x7f090018;
-        public static final int action_settings=0x7f090015;
-        public static final int action_share=0x7f090017;
+        public static final int action_logout=0x7f090017;
+        public static final int action_settings=0x7f090014;
+        public static final int action_share=0x7f090016;
         public static final int buttonUrl=0x7f09000e;
         public static final int calendar1=0x7f090011;
         public static final int delete=0x7f090001;
