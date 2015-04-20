@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import java.util.ArrayList;
 
-public class CustomListAdapter extends BaseAdapter {
+public class GroupCustomListAdapter extends BaseAdapter {
 
     private final Activity activity;
     private LayoutInflater inflater;
@@ -17,7 +17,7 @@ public class CustomListAdapter extends BaseAdapter {
     private final ArrayList<String> listDate;
     private final ArrayList<String> listPeople;
 
-    public CustomListAdapter(Activity activity, ArrayList<String> groupList, ArrayList<String> groupDate, ArrayList<String> groupNames) {
+    public GroupCustomListAdapter(Activity activity, ArrayList<String> groupList, ArrayList<String> groupDate, ArrayList<String> groupNames) {
         this.activity = activity;
         this.list = groupList;
         this.listDate = groupDate;

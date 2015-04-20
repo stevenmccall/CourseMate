@@ -22,7 +22,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import com.txstatecs4398.coursemate.meetingshared.Person;
+import com.txstatecs4398.coursemate.collections.Person;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,7 +46,7 @@ public class GroupSelectionActivity extends Activity {
     private final ArrayList<String> groupList = new ArrayList<>();
     private final ArrayList<String> groupDate = new ArrayList<>();
     private final ArrayList<String> groupNames = new ArrayList<>();
-    private CustomListAdapter listAdapter = null;
+    private GroupCustomListAdapter listAdapter = null;
     private String nfcNetID;
     private String nfcSched;
     private AlertDialog alertDialog;
@@ -75,7 +75,7 @@ public class GroupSelectionActivity extends Activity {
         }
         //----------Start of Group Processing--------------
         if (groupRetriever()) {
-            listAdapter = new CustomListAdapter(this, groupList, groupDate, groupNames);
+            listAdapter = new GroupCustomListAdapter(this, groupList, groupDate, groupNames);
             list.setAdapter(listAdapter);
             
             list.setOnItemClickListener(new OnItemClickListener() {

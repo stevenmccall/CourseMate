@@ -9,14 +9,14 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import java.util.ArrayList;
 
-public class DeleterCustomListAdapter extends BaseAdapter {
+public class PersonCustomListAdapter extends BaseAdapter {
 
     private final Activity activity;
     private LayoutInflater inflater;
     private final ArrayList<String> list;
-    private final DeleterCustomListAdapter context = this;
+    private final PersonCustomListAdapter context = this;
 
-    public DeleterCustomListAdapter(Activity activity, ArrayList<String> groupList) {
+    public PersonCustomListAdapter(Activity activity, ArrayList<String> groupList) {
         this.activity = activity;
         this.list = groupList;
     }

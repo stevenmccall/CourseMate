@@ -14,7 +14,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -46,7 +45,7 @@ public class ShareGroupActivity extends Activity {
     final Context context = this;
     private AlertDialog alertDialog;
     private ListView list;
-    private DeleterCustomListAdapter listAdapter;
+    private PersonCustomListAdapter listAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,7 +61,7 @@ public class ShareGroupActivity extends Activity {
             groupRetriever();//gets all the people in the current group
             peopleRetriever();//gets all the people that could be added to the group
             
-            listAdapter = new DeleterCustomListAdapter(this, userAdded);
+            listAdapter = new PersonCustomListAdapter(this, userAdded);
             list.setAdapter(listAdapter);
             
             list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() 
@@ -206,6 +205,7 @@ public class ShareGroupActivity extends Activity {
         File root = getFilesDir();
 
         FilenameFilter beginswithm = new FilenameFilter() {
+            @Override
             public boolean accept(File directory, String filename) {
                 return filename.startsWith("CMP");
             }
