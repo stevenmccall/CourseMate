@@ -1,5 +1,6 @@
 package com.txstatecs4398.coursemate;
 
+import com.txstatecs4398.coursemate.collections.list_adapters.PersonCustomListAdapter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;

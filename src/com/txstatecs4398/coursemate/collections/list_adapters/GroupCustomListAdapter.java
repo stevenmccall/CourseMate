@@ -1,4 +1,4 @@
-package com.txstatecs4398.coursemate;
+package com.txstatecs4398.coursemate.collections.list_adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import com.txstatecs4398.coursemate.R;
 import java.util.ArrayList;
 
 public class GroupCustomListAdapter extends BaseAdapter {
