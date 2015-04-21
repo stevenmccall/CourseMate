@@ -3,6 +3,7 @@ C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\CourseMate.ap_ \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\arrow.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\blue_button.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\dialog.xml \
+C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\group_icon.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\ic_action_add_group.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\ic_action_delete.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\ic_action_share.png \
@@ -10,8 +11,10 @@ C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\ic_actio
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\list_row_bg.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\list_row_bg_hover.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\list_row_selector.xml \
+C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\logout.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\mainsite_logo.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\nfc_logo32x32.png \
+C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\person_icon.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\red_button.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\rounded_edittext.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-hdpi\supercat.png \
@@ -42,12 +45,15 @@ C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\values\styles.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\xml\nfc_tech_filter.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\res\drawable-hdpi\add_group256x256.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\res\drawable-hdpi\arrow.png \
+C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\res\drawable-hdpi\group_icon.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\res\drawable-hdpi\ic_action_add_group.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\res\drawable-hdpi\ic_action_delete.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\res\drawable-hdpi\ic_action_share.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\res\drawable-hdpi\ic_action_user_add.png \
+C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\res\drawable-hdpi\logout.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\res\drawable-hdpi\mainsite_logo.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\res\drawable-hdpi\nfc_logo32x32.png \
+C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\res\drawable-hdpi\person_icon.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\res\drawable-hdpi\supercat.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\res\drawable-ldpi\ic_launcher.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\res\drawable-mdpi\ic_action_add_group.png \

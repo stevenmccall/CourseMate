@@ -21,19 +21,22 @@ public final class R {
         public static final int arrow=0x7f020001;
         public static final int blue_button=0x7f020002;
         public static final int dialog=0x7f020003;
-        public static final int ic_action_add_group=0x7f020004;
-        public static final int ic_action_delete=0x7f020005;
-        public static final int ic_action_share=0x7f020006;
-        public static final int ic_action_user_add=0x7f020007;
-        public static final int ic_launcher=0x7f020008;
-        public static final int list_row_bg=0x7f020009;
-        public static final int list_row_bg_hover=0x7f02000a;
-        public static final int list_row_selector=0x7f02000b;
-        public static final int mainsite_logo=0x7f02000c;
-        public static final int nfc_logo32x32=0x7f02000d;
-        public static final int red_button=0x7f02000e;
-        public static final int rounded_edittext=0x7f02000f;
-        public static final int supercat=0x7f020010;
+        public static final int group_icon=0x7f020004;
+        public static final int ic_action_add_group=0x7f020005;
+        public static final int ic_action_delete=0x7f020006;
+        public static final int ic_action_share=0x7f020007;
+        public static final int ic_action_user_add=0x7f020008;
+        public static final int ic_launcher=0x7f020009;
+        public static final int list_row_bg=0x7f02000a;
+        public static final int list_row_bg_hover=0x7f02000b;
+        public static final int list_row_selector=0x7f02000c;
+        public static final int logout=0x7f02000d;
+        public static final int mainsite_logo=0x7f02000e;
+        public static final int nfc_logo32x32=0x7f02000f;
+        public static final int person_icon=0x7f020010;
+        public static final int red_button=0x7f020011;
+        public static final int rounded_edittext=0x7f020012;
+        public static final int supercat=0x7f020013;
     }
     public static final class id {
         public static final int action_add_group=0x7f090015;
@@ -42,7 +45,7 @@ public final class R {
         public static final int action_settings=0x7f090014;
         public static final int action_share=0x7f090016;
         public static final int buttonUrl=0x7f09000e;
-        public static final int calendar1=0x7f090011;
+        public static final int calendar1=0x7f090012;
         public static final int delete=0x7f090001;
         public static final int groupMembers=0x7f090008;
         public static final int groupName=0x7f090002;
@@ -54,7 +57,7 @@ public final class R {
         public static final int password1=0x7f09000d;
         public static final int semester=0x7f090009;
         public static final int text1=0x7f09000a;
-        public static final int text2=0x7f090012;
+        public static final int text2=0x7f090011;
         public static final int textview1=0x7f09000f;
         public static final int thumbnail=0x7f090000;
         public static final int userGroup=0x7f090004;

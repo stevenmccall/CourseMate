@@ -5,31 +5,43 @@
               android:background="#501213"
               android:paddingTop="10sp"
               android:orientation="vertical" >   
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:id="@+id/header"
-                  android:layout_width="wrap_content"
+                  android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:background="#501213"
                   android:orientation="horizontal" 
                   android:layout_alignParentRight="true"
+                  android:paddingLeft="10sp"
                   android:paddingRight="10sp"
                   android:paddingBottom="10sp">
             <TextView
-                android:id="@+id/text1"
+                android:id="@+id/text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:text="Tap to Send "   
+                android:text="Software Engineering Project"   
                 android:lines="1"         
-            />      
+                android:layout_alignParentLeft="true"
+            />
             <ImageView 
                 android:id="@+id/image1"
                 android:contentDescription="NFC"
                 android:src="@drawable/nfc_logo32x32"
                 android:layout_width="40sp"
-                android:layout_height="wrap_content"            
+                android:layout_height="wrap_content"      
+                android:layout_alignParentRight="true"      
             /> 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tap to Send "   
+                android:lines="1"
+                android:layout_toLeftOf="@id/image1"
+            />      
+            
+        </RelativeLayout>
         <ListView
             android:id="@+id/list1"
             android:layout_width="340sp"

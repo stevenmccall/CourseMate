@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.txstatecs4398.coursemate.collections.Group;
 import com.txstatecs4398.coursemate.collections.Person;
 import com.txstatecs4398.coursemate.collections.list_adapters.PersonCustomListAdapter;
@@ -49,6 +50,7 @@ public class ShareGroupActivity extends Activity {
     private PersonCustomListAdapter listAdapter;
     private final ArrayList<Integer> mSelectedItems = new ArrayList();
     private boolean first = true;
+    private TextView groupnameView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,7 @@ public class ShareGroupActivity extends Activity {
         
         if (login() && (extras != null)) {
             list = (ListView) findViewById(R.id.list1);
+            groupnameView = (TextView) findViewById(R.id.text2);
             
             if(extras.size() == 1)
             {
@@ -77,6 +80,7 @@ public class ShareGroupActivity extends Activity {
             }
             peopleRetriever();//gets all the people that could be added to the group
             
+            groupnameView.setText(groupName);
             listAdapter = new PersonCustomListAdapter(this, userAdded);
             list.setAdapter(listAdapter);
             list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() 

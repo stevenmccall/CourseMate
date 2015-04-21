@@ -9,7 +9,7 @@
     <ImageView
         android:contentDescription="tempImg"
         android:id="@+id/thumbnail"
-        android:src="@drawable/nfc_logo32x32"
+        android:src="@drawable/group_icon"
         android:layout_width="50sp"
         android:layout_height="50sp"
         android:paddingRight="10sp"
