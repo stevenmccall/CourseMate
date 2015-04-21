@@ -83,7 +83,7 @@ public class GroupSelectionActivity extends Activity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view,
                         int position, long id) {
-                    Intent intent = new Intent(GroupSelectionActivity.this, ShareGroupActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), ShareGroupActivity.class);
                     intent.putExtra("groupName", groupList.get(position));
                     startActivity(intent);
                 }
@@ -209,6 +209,19 @@ public class GroupSelectionActivity extends Activity {
             } else {
                 writer.write("Fall " + year);
             }
+            writer.newLine();
+            Scanner in;
+            try (FileInputStream file = openFileInput("user")) 
+            {
+                in = new Scanner(file);
+                writer.write(in.next());
+                writer.newLine();
+                in.nextLine();//removes newLine character from sourcefile
+                writer.write(in.nextLine());
+                file.close();
+            } catch (Exception e) {
+                return false;
+            }            
             
             writer.flush();
             writer.close();

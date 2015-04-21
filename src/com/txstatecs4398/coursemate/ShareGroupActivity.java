@@ -38,8 +38,8 @@ public class ShareGroupActivity extends Activity {
     private NfcAdapter mNfcAdapter;
     private NdefMessage mNdefMessage;
     private final ArrayList<NdefRecord> NFCRecords = new ArrayList();    
-    private final ArrayList<String> userAdded = new ArrayList();
-    private final ArrayList<String> schedAdded = new ArrayList();    
+    private ArrayList<String> userAdded = new ArrayList();
+    private ArrayList<String> schedAdded = new ArrayList();    
     private final ArrayList<String> user = new ArrayList();
     private final ArrayList<String> sched = new ArrayList();        
     private String groupName = "";
@@ -48,28 +48,43 @@ public class ShareGroupActivity extends Activity {
     private ListView list;
     private PersonCustomListAdapter listAdapter;
     private final ArrayList<Integer> mSelectedItems = new ArrayList();
+    private boolean first = true;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.share_group);
         Bundle extras = getIntent().getExtras();
-
+        mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
+            if (mNfcAdapter == null)finish();
+        
         if (login() && (extras != null)) {
-            groupName = extras.getString("groupName");
-            
             list = (ListView) findViewById(R.id.list1);
             
-            groupRetriever();//gets all the people in the current group
+            if(extras.size() == 1)
+            {
+                groupName = extras.getString("groupName");
+                groupRetriever();//gets all the people in the current group
+            }
+            else
+            {
+                userAdded = extras.getStringArrayList("nfcNetID");
+                schedAdded = extras.getStringArrayList("nfcSched");
+                groupName = userAdded.get(0);
+                groupDate = schedAdded.get(0);
+                userAdded.remove(0);
+                schedAdded.remove(0);
+            }
             peopleRetriever();//gets all the people that could be added to the group
             
             listAdapter = new PersonCustomListAdapter(this, userAdded);
             list.setAdapter(listAdapter);
-            
             list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() 
             {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    if(userAdded.get(position).equals(user.get(0)))return true;
+                    
                     userAdded.remove(position);
                     schedAdded.remove(position);
                     groupCreate();
@@ -77,13 +92,8 @@ public class ShareGroupActivity extends Activity {
                     return true;
                 }
             });
-
-            mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
-
-            NFCRecords.add(createNewTextRecord(user.get(0), Locale.ENGLISH, true));
-            NFCRecords.add(createNewTextRecord(sched.get(0), Locale.ENGLISH, true));
-            NdefRecord[] records = NFCRecords.toArray(new NdefRecord[NFCRecords.size()]);
-            mNdefMessage = new NdefMessage(records);
+            groupCreate();
+            
         } else {
             finish();
         }
@@ -182,15 +192,26 @@ public class ShareGroupActivity extends Activity {
 
             writer.write(groupDate);
             writer.newLine();
+            NFCRecords.clear();
+            NFCRecords.add(createNewTextRecord(groupName, Locale.ENGLISH, true));
+            NFCRecords.add(createNewTextRecord(groupDate, Locale.ENGLISH, true));
             for (int i = 0; i < userAdded.size(); i++) {   //user
                 writer.write(userAdded.get(i));
                 writer.newLine();
                 writer.write(schedAdded.get(i));
                 writer.newLine();
+                NFCRecords.add(createNewTextRecord(userAdded.get(i), Locale.ENGLISH, true));
+                NFCRecords.add(createNewTextRecord(schedAdded.get(i), Locale.ENGLISH, true));
             }
 
             writer.flush();
             writer.close();
+            
+            NdefRecord[] records = NFCRecords.toArray(new NdefRecord[NFCRecords.size()]);
+            mNdefMessage = new NdefMessage(records);
+            if(!first)
+                mNfcAdapter.enableForegroundNdefPush(this, mNdefMessage);
+            first = false;
         } catch (IOException e) {}
     }
 

@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -36,8 +37,8 @@ public class LoginActivity extends Activity {
     private IntentFilter[] mIntentFilters;
     private String[][] mNFCTechLists;
     
-    private String nfcNetID = "";
-    private String nfcSched = "";
+    private final ArrayList<String> nfcNetID = new ArrayList();
+    private final ArrayList<String> nfcSched = new ArrayList();
     private boolean exitApp = false;
 
     @Override
@@ -55,22 +56,30 @@ public class LoginActivity extends Activity {
         //-----NFC Code-----
         mTextView = (TextView) findViewById(R.id.textview1);
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
-
-        if (mNfcAdapter.equals(null)) 
-            mTextView.setText("This phone is not NFC enabled.");
         
         if(login())
         {
             onNewIntent(getIntent());
             
-            Intent intent = new Intent(LoginActivity.this, GroupSelectionActivity.class);///*
-            if(!nfcNetID.isEmpty() && !nfcSched.isEmpty())
+            if(nfcNetID.size() < 2)
             {
+                Intent intent = new Intent(getApplicationContext(), GroupSelectionActivity.class);///*
+                if(!nfcNetID.isEmpty() && !nfcSched.isEmpty())
+                {
+                    intent.putExtra("nfcNetID", nfcNetID.get(0));
+                    intent.putExtra("nfcSched", nfcSched.get(0));
+                }//*/
+                startActivity(intent);
+                finish();
+            }
+            else
+            {
+                Intent intent = new Intent(getApplicationContext(), ShareGroupActivity.class);///*
                 intent.putExtra("nfcNetID", nfcNetID);
                 intent.putExtra("nfcSched", nfcSched);
-            }//*/
-            startActivity(intent);
-            finish();
+                startActivity(intent);
+                finish();
+            }
         }
 
         mPendingIntent = PendingIntent.getActivity(this, 0,
@@ -159,11 +168,9 @@ public class LoginActivity extends Activity {
 
                             if (j%2 == 0)
                             {
-                                nfcNetID = (new String(payload, langCodeLen + 1, payload.length - langCodeLen - 1,
-                                        textEncoding));
+                                nfcNetID.add((new String(payload, langCodeLen + 1, payload.length - langCodeLen - 1, textEncoding)));
                             } else {
-                                nfcSched =  (new String(payload, langCodeLen + 1, payload.length - langCodeLen - 1,
-                                        textEncoding));
+                                nfcSched.add((new String(payload, langCodeLen + 1, payload.length - langCodeLen - 1, textEncoding)));
                             }
                         }
                     }
