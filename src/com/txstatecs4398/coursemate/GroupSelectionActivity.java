@@ -68,11 +68,23 @@ public class GroupSelectionActivity extends Activity {
 
         // end of view setup code
         if (extras != null) {
+            boolean newPerson = true;
             nfcNetID = extras.getString("nfcNetID");
-            nfcSched = extras.getString("nfcSched");
-            Person tempPerson = new Person(nfcNetID);
-            tempPerson.nfcParse(nfcSched);
-            personCreate(tempPerson);
+            
+            try (FileInputStream file = openFileInput("user")) 
+            {
+                Scanner in = new Scanner(file);
+                if(nfcNetID.equals(in.next()))newPerson = false;
+                file.close();
+            } catch (Exception e) {}
+            
+            if(newPerson)
+            {
+                nfcSched = extras.getString("nfcSched");
+                Person tempPerson = new Person(nfcNetID);
+                tempPerson.nfcParse(nfcSched);
+                personCreate(tempPerson);
+            }
         }
         //----------Start of Group Processing--------------
         if (groupRetriever()) {
