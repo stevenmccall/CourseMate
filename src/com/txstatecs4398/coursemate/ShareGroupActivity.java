@@ -2,9 +2,12 @@ package com.txstatecs4398.coursemate;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
@@ -96,11 +99,22 @@ public class ShareGroupActivity extends Activity {
                     return true;
                 }
             });
-            groupCreate();
-            
+            groupCreate();            
         } else {
             finish();
         }
+        
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        CalMainActivity fragment = new CalMainActivity();
+        fragmentTransaction.add(R.id.my_fragment, fragment);
+        fragmentTransaction.commit();
+        
+        //Intent intent = new Intent(getApplicationContext(), CalMainActivity.class);///*
+                //intent.putExtra("nfcNetID", nfcNetID);
+               // intent.putExtra("nfcSched", nfcSched);
+        //startActivity(intent);
+        //finish();
     }
     
     public Group groupCollectionMake()

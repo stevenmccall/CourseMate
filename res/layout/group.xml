@@ -15,10 +15,12 @@
         android:layout_centerInParent="true"
     />
     <ListView
-        android:id="@+id/list1"
-        android:layout_width="340sp"
+        android:id="@+id/list1"        
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"     
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10sp"   
+        android:layout_marginRight="10sp"  
         android:divider="#d9d9d9"
         android:dividerHeight="1dp"
         android:listSelector="@drawable/list_row_selector"

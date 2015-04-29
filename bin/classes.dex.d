@@ -1,5 +1,11 @@
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes.dex : \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\BuildConfig.class \
+C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\CalCommonMethod.class \
+C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\CalEntity.class \
+C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\CalMainActivity$1.class \
+C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\CalMainActivity$LoadViewsInToWeekView.class \
+C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\CalMainActivity.class \
+C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\CalWeekSets.class \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\collections\Event.class \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\collections\Group.class \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\collections\HTMLParser.class \

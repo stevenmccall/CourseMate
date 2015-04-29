@@ -13,6 +13,10 @@
     
     <application android:label="@string/app_name" android:icon="@drawable/supercat">
         <activity
+            android:name=".CalMainActivity"
+            android:screenOrientation="portrait"
+        />
+        <activity
             android:name=".ShareGroupActivity"
             android:screenOrientation="portrait"
         />

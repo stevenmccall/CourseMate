@@ -29,12 +29,14 @@ C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-xhdpi\ic_acti
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-xhdpi\ic_action_share.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-xhdpi\ic_action_user_add.png \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\drawable-xhdpi\ic_launcher.png \
+C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\layout\activity_main.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\layout\deleter_list_row.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\layout\dialog.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\layout\group.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\layout\html_loader.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\layout\list_row.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\layout\login.xml \
+C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\layout\progress_layout.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\layout\share_group.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\layout\share_person.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\menu\share_group_activity_actions.xml \
