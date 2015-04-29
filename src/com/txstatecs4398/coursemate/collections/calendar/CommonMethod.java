@@ -1,10 +1,10 @@
-package com.txstatecs4398.coursemate;
+package com.txstatecs4398.coursemate.collections.calendar;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class CalCommonMethod {
+public class CommonMethod {
 
 	public static String convertWeekDays(String date) {
 		String formattedDate = null;

@@ -6,7 +6,7 @@
               android:paddingTop="10sp"
               android:orientation="vertical" >   
     
-    <fragment android:name="com.txstatecs4398.coursemate.CalMainActivity"
+    <fragment android:name="com.txstatecs4398.coursemate.collections.calendar.CalendarFragment"
             android:id="@+id/my_fragment"
             android:layout_width="fill_parent"
             android:layout_height="320sp"

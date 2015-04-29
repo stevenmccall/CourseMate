@@ -1,6 +1,6 @@
-package com.txstatecs4398.coursemate;
+package com.txstatecs4398.coursemate.collections.calendar;
 
-public class CalEntity {
+public class Entity {
 
 	public String Name;
 	public String isOne;

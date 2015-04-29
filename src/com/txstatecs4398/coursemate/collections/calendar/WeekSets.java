@@ -1,6 +1,6 @@
-package com.txstatecs4398.coursemate;
+package com.txstatecs4398.coursemate.collections.calendar;
 
-public class CalWeekSets {
+public class WeekSets {
 	public String day;
 	public String jobID;
 	public String jobRefID;

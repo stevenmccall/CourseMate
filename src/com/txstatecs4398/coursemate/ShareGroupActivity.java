@@ -1,5 +1,6 @@
 package com.txstatecs4398.coursemate;
 
+import com.txstatecs4398.coursemate.collections.calendar.CalendarFragment;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
@@ -7,7 +8,6 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
@@ -106,7 +106,7 @@ public class ShareGroupActivity extends Activity {
         
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        CalMainActivity fragment = new CalMainActivity();
+        CalendarFragment fragment = new CalendarFragment();
         fragmentTransaction.add(R.id.my_fragment, fragment);
         fragmentTransaction.commit();
         

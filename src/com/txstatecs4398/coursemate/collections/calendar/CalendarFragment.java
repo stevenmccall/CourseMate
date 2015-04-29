@@ -1,5 +1,8 @@
-package com.txstatecs4398.coursemate;
+package com.txstatecs4398.coursemate.collections.calendar;
 
+import com.txstatecs4398.coursemate.collections.calendar.WeekSets;
+import com.txstatecs4398.coursemate.collections.calendar.Entity;
+import com.txstatecs4398.coursemate.collections.calendar.CommonMethod;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,8 +26,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.txstatecs4398.coursemate.R;
 
-public class CalMainActivity extends Fragment {
+public class CalendarFragment extends Fragment {
 
 	// *TextView
 	private TextView textViewServiceApp;
@@ -86,11 +90,11 @@ public class CalMainActivity extends Fragment {
 	public String firstDayOfWeek;
 	public String lastDayOfWeek;
 
-	public static ArrayList<CalEntity> arrayListEntity = new ArrayList<CalEntity>();
-	public static ArrayList<CalEntity> arrayListEButtonId = new ArrayList<CalEntity>();
+	public static ArrayList<Entity> arrayListEntity = new ArrayList<Entity>();
+	public static ArrayList<Entity> arrayListEButtonId = new ArrayList<Entity>();
 
 	public int weekDaysCount = 0;
-	public ArrayList<CalWeekSets> weekDatas;
+	public ArrayList<WeekSets> weekDatas;
 	String tapMargin ;
 	String buttonHight;
         
@@ -150,24 +154,24 @@ public class CalMainActivity extends Fragment {
 		relativeLayoutSatDay = (RelativeLayout) v.findViewById(R.id.relativeLayoutSatDay);
 
 		NextPreWeekday = getWeekDay();
-		firstDayOfWeek = CalCommonMethod.convertWeekDays(NextPreWeekday[0]);
-		lastDayOfWeek = CalCommonMethod.convertWeekDays(NextPreWeekday[6]);
+		firstDayOfWeek = CommonMethod.convertWeekDays(NextPreWeekday[0]);
+		lastDayOfWeek = CommonMethod.convertWeekDays(NextPreWeekday[6]);
 		textViewDate.setText(firstDayOfWeek + "-" + lastDayOfWeek + " "
-				+ CalCommonMethod.convertWeekDaysMouth(NextPreWeekday[6]));
+				+ CommonMethod.convertWeekDaysMouth(NextPreWeekday[6]));
 
-		textViewSun.setText(CalCommonMethod.convertWeekDays(NextPreWeekday[0])
+		textViewSun.setText(CommonMethod.convertWeekDays(NextPreWeekday[0])
 				+ "\nSun");
-		textViewMon.setText(CalCommonMethod.convertWeekDays(NextPreWeekday[1])
+		textViewMon.setText(CommonMethod.convertWeekDays(NextPreWeekday[1])
 				+ "\nMon");
-		textViewTue.setText(CalCommonMethod.convertWeekDays(NextPreWeekday[2])
+		textViewTue.setText(CommonMethod.convertWeekDays(NextPreWeekday[2])
 				+ "\nTue");
-		textViewWed.setText(CalCommonMethod.convertWeekDays(NextPreWeekday[3])
+		textViewWed.setText(CommonMethod.convertWeekDays(NextPreWeekday[3])
 				+ "\nWed");
-		textViewThu.setText(CalCommonMethod.convertWeekDays(NextPreWeekday[4])
+		textViewThu.setText(CommonMethod.convertWeekDays(NextPreWeekday[4])
 				+ "\nThu");
-		textViewFri.setText(CalCommonMethod.convertWeekDays(NextPreWeekday[5])
+		textViewFri.setText(CommonMethod.convertWeekDays(NextPreWeekday[5])
 				+ "\nFri");
-		textViewSat.setText(CalCommonMethod.convertWeekDays(NextPreWeekday[6])
+		textViewSat.setText(CommonMethod.convertWeekDays(NextPreWeekday[6])
 				+ "\nSat");
 		try
 		{
@@ -268,7 +272,7 @@ public class CalMainActivity extends Fragment {
 			int position = 0;
 
 			for (int j = 0; j < arrayListEntity.size(); j++) {
-				CalEntity itemOne = arrayListEntity.get(j);
+				Entity itemOne = arrayListEntity.get(j);
 
 				String arryJobRefID = itemOne.JobRefID;
 				if (arryJobRefID.equals(buttonText)) {
@@ -277,31 +281,31 @@ public class CalMainActivity extends Fragment {
 				}
 			}
 
-			CalEntity itemOne1 = arrayListEntity.get(position);
+			Entity itemOne1 = arrayListEntity.get(position);
 			 Toast.makeText(getActivity() , "  " + itemOne1.JobRefID , Toast.LENGTH_SHORT).show();
 
 		}
 	};
 
-	public static CalEntity getEntity(String jobID, String jobRefID) {
-		CalEntity E = new CalEntity();
+	public static Entity getEntity(String jobID, String jobRefID) {
+		Entity E = new Entity();
 		E.JobIDForButton = jobID;
 		E.JobRefID = jobRefID;
 		return E;
 
 	}
 
-	public static CalEntity getButton(int layoutView, int buttonTag) {
-		CalEntity E = new CalEntity();
+	public static Entity getButton(int layoutView, int buttonTag) {
+		Entity E = new Entity();
 		E.layoutView = layoutView;
 		E.buttonTag = buttonTag;
 		return E;
 
 	}
 
-	public static CalWeekSets getWeekValues(String weekDay, String jobId,
+	public static WeekSets getWeekValues(String weekDay, String jobId,
 			String jobRefId, String tapMarginA, String buttonHeightA) {
-		CalWeekSets W = new CalWeekSets();
+		WeekSets W = new WeekSets();
 		W.day = weekDay;
 		W.jobID = jobId;
 		W.jobRefID = jobRefId;
@@ -446,7 +450,7 @@ public class CalMainActivity extends Fragment {
 		@Override
 		protected String doInBackground(String... params) {
 			try {
-				weekDatas = new ArrayList<CalWeekSets>();
+				weekDatas = new ArrayList<WeekSets>();
 
 				
 				
@@ -494,7 +498,7 @@ public class CalMainActivity extends Fragment {
 
 			try {
 
-				CalWeekSets weekToDay;
+				WeekSets weekToDay;
 				int length = weekDatas.size();
 				Log.i("length===>", String.valueOf(length));
 

@@ -1,19 +1,18 @@
-# view AndroidManifest.xml #generated:15
-# view res/layout/share_group.xml #generated:9
--keep class com.txstatecs4398.coursemate.CalMainActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:23
+# view AndroidManifest.xml #generated:19
 -keep class com.txstatecs4398.coursemate.GroupSelectionActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:32
+# view AndroidManifest.xml #generated:28
 -keep class com.txstatecs4398.coursemate.HtmlLoaderActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:38
+# view AndroidManifest.xml #generated:34
 -keep class com.txstatecs4398.coursemate.LoginActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:19
+# view AndroidManifest.xml #generated:15
 -keep class com.txstatecs4398.coursemate.ShareGroupActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:27
+# view AndroidManifest.xml #generated:23
 -keep class com.txstatecs4398.coursemate.SharePersonActivity { <init>(...); }
+
+# view res/layout/share_group.xml #generated:9
+-keep class com.txstatecs4398.coursemate.collections.calendar.CalendarFragment { <init>(...); }
 
