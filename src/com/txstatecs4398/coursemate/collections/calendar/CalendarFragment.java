@@ -229,7 +229,7 @@ public class CalendarFragment extends Fragment {
                     record+=start+" ";
                     // get button end time location
                     Integer end = e.getEndTime();       // recordField[%4]
-                    proc = start.doubleValue();
+                    proc = end.doubleValue();
                     proc /= 50; // 730 -> 14.6  725 -> 14.5  720 -> 14.4
                     end = (int)Math.round(proc);
                     record+=end+" ";
