@@ -27,6 +27,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.txstatecs4398.coursemate.R;
+import com.txstatecs4398.coursemate.collections.Group;
 
 public class CalendarFragment extends Fragment {
 
@@ -183,6 +184,10 @@ public class CalendarFragment extends Fragment {
 		
 		
 	}
+    
+        public void update(Group temp)
+        {
+        }
 
 	public String[] getWeekDay() {
 
