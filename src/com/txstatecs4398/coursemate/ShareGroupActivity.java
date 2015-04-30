@@ -109,7 +109,7 @@ public class ShareGroupActivity extends Activity {
 
         fragmentTransaction.add(R.id.my_fragment, fragment);
         fragmentTransaction.commit();
-        fragment.update(groupCollectionMake());//used to update fragment
+        //fragment.update(groupCollectionMake());//used to update fragment
     }
     
     public Group groupCollectionMake()
