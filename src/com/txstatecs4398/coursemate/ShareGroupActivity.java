@@ -54,8 +54,6 @@ public class ShareGroupActivity extends Activity {
     private final ArrayList<Integer> mSelectedItems = new ArrayList();
     private boolean first = true;
     private TextView groupnameView;
-    private final FragmentManager fragmentManager = getFragmentManager();
-    private final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
     private CalendarFragment fragment;
 
     @Override
@@ -65,9 +63,6 @@ public class ShareGroupActivity extends Activity {
         Bundle extras = getIntent().getExtras();
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
             if (mNfcAdapter == null)finish();
-            
-        new CalendarFragment().temp = groupCollectionMake();
-        fragment = new CalendarFragment();
         
         if (login() && (extras != null)) {
             list = (ListView) findViewById(R.id.list1);
@@ -110,8 +105,9 @@ public class ShareGroupActivity extends Activity {
             finish();
         }
 
-        fragmentTransaction.add(R.id.my_fragment, fragment);
-        fragmentTransaction.commit();
+        new CalendarFragment().temp = groupCollectionMake();
+        fragment = new CalendarFragment();
+        getFragmentManager().beginTransaction().add(R.id.my_fragment, fragment, "current").commit();
     }
     
     public Group groupCollectionMake()
@@ -231,7 +227,7 @@ public class ShareGroupActivity extends Activity {
                intent.putExtra("groupName", groupName);
                startActivity(intent);
                 
-                mNfcAdapter.enableForegroundNdefPush(this, mNdefMessage);
+               mNfcAdapter.enableForegroundNdefPush(this, mNdefMessage);
             }
             first = false;
            
