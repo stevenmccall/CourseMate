@@ -188,10 +188,10 @@ public class CalendarFragment extends Fragment {
         } catch (Exception e) {
             Log.getStackTraceString(e);
         }
-        update(temp);
+        update();
     }
 
-    private void update(Group temp) {
+    private void update() {
         textViewSat.setText(CommonMethod.convertWeekDays(NextPreWeekday[6])
                 + "\nSat2");
         try {
