@@ -54,9 +54,9 @@ public class ShareGroupActivity extends Activity {
     private final ArrayList<Integer> mSelectedItems = new ArrayList();
     private boolean first = true;
     private TextView groupnameView;
-    private final FragmentManager fragmentManager = getFragmentManager();
-    private final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-    private final CalendarFragment fragment = new CalendarFragment();
+    private FragmentManager fragmentManager = getFragmentManager();
+    private FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+    private CalendarFragment fragment = new CalendarFragment();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -109,6 +109,7 @@ public class ShareGroupActivity extends Activity {
 
         fragmentTransaction.add(R.id.my_fragment, fragment);
         fragmentTransaction.commit();
+        fragment.update(groupCollectionMake());//used to update fragment
     }
     
     public Group groupCollectionMake()
@@ -314,7 +315,7 @@ public class ShareGroupActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-
+        fragment.update(groupCollectionMake());//used to update fragment
         if (mNfcAdapter != null) {
             mNfcAdapter.enableForegroundNdefPush(this, mNdefMessage);
         }
