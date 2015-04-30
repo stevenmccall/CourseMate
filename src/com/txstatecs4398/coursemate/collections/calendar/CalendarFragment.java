@@ -201,7 +201,7 @@ public class CalendarFragment extends Fragment {
                 record+=colorWheel[temp.returnStorage().indexOf(p) % 10]; // recordField[1]
                 for(Event e : p.getEvents()){
                     // get day
-                    switch(e.getDay().toUpperCase().substring(0,2)){ // recordField[%2]
+                    switch(e.getDay().toUpperCase()){ // Apparently we represent days using 1 letter codes
                         case "M":record="1 ";
                             break;
                         case "T":record="2 ";
@@ -233,6 +233,8 @@ public class CalendarFragment extends Fragment {
                     
                 }
             }
+            Toast toast = Toast.makeText(getActivity().getApplicationContext(), "DEBUG: "+record, Toast.LENGTH_LONG);
+            toast.show();
             new LoadViewsInToWeekView().execute(record);
         } catch (Exception e) {
             Log.getStackTraceString(e);
