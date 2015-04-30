@@ -28,6 +28,7 @@ import com.txstatecs4398.coursemate.collections.Group;
 import com.txstatecs4398.coursemate.collections.Person;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class CalendarFragment extends Fragment {
 
@@ -185,7 +186,7 @@ public class CalendarFragment extends Fragment {
 
     private void update() {
         textViewSat.setText(CommonMethod.convertWeekDays(NextPreWeekday[6])
-                + "\nSat2");
+                + "\nSat"+Integer.toString(new Random().nextInt(100)));
         try {
             List<String> records = new ArrayList<>();
             String record="";

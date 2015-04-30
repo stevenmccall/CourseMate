@@ -65,6 +65,7 @@ public class ShareGroupActivity extends Activity {
         Bundle extras = getIntent().getExtras();
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
             if (mNfcAdapter == null)finish();
+            
         new CalendarFragment().temp = groupCollectionMake();
         fragment = new CalendarFragment();
         
@@ -224,10 +225,12 @@ public class ShareGroupActivity extends Activity {
             NdefRecord[] records = NFCRecords.toArray(new NdefRecord[NFCRecords.size()]);
             mNdefMessage = new NdefMessage(records);
             
-            new CalendarFragment().temp = groupCollectionMake();
-            fragment = new CalendarFragment();//used to update fragment
             if(!first)
             {
+               Intent intent = new Intent(getApplicationContext(), ShareGroupActivity.class);
+               intent.putExtra("groupName", groupName);
+               startActivity(intent);
+                
                 mNfcAdapter.enableForegroundNdefPush(this, mNdefMessage);
             }
             first = false;

@@ -28,7 +28,6 @@ public class LoginActivity extends Activity {
 
     private EditText user1;
     private EditText pass1;
-    private String schedule = "";
     private Button button;
     private TextView mTextView;
 
@@ -104,9 +103,6 @@ public class LoginActivity extends Activity {
                     Intent intent = new Intent(LoginActivity.this, HtmlLoaderActivity.class);//GroupSelectionActivity.class);//HtmlLoaderActivity.class);
                     intent.putExtra("username", user1.getText().toString());  //used to pass data
                     intent.putExtra("password", pass1.getText().toString());  //used to pass data
-                    if (!schedule.isEmpty()) {
-                        intent.putExtra("schedule", schedule);
-                    }
                     startActivity(intent);
                     finish();
                 } else {
