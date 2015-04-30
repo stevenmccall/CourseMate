@@ -214,8 +214,11 @@ public class CalendarFragment extends Fragment {
                             break;
                         case "S":record="6 ";
                             break;
-                        default:
                         case "U":record="0 ";
+                            break;
+                        default:
+                            Toast toast = Toast.makeText(getActivity().getApplicationContext(), "DATE PARSING ERROR: Malformed date code detected. Received="+record, Toast.LENGTH_LONG);
+                            toast.show();    
                     }
                     // set button start time location
                     // 0 = 0:00, 1 = 0:30, 2 = 1:00 ... 47 = 23:30
