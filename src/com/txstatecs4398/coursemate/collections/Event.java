@@ -30,16 +30,17 @@ public class Event {
     }
     
     //getters
-    protected String getDay() {
+    // Aurash: Why protected? These are now public...
+    public String getDay() {
         return day;
     }
-    protected int getStartTime() {
+    public int getStartTime() {
         return startTime;
     }
-    protected int getEndTime() {
+    public int getEndTime() {
         return endTime;
     }
-    protected String getEvent() {
+    public String getEvent() {
         return event;
     }
     

@@ -54,6 +54,12 @@ public class Person {// extends GroupCalendar{
         }
     }
 
+    // Aurash - this makes my life easier.
+    public LinkedList<Event> getEvents(){
+        return weekSched;
+    }
+    
+    
     public String showSched() {
         schedule = "";
         for (Event day : weekSched) {
