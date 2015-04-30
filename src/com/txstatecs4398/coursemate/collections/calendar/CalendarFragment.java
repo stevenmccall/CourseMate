@@ -234,7 +234,8 @@ public class CalendarFragment extends Fragment {
                     
                 }
             }
-            Toast toast = Toast.makeText(getActivity().getApplicationContext(), "DEBUG: "+record, Toast.LENGTH_LONG);
+            records.add(record); // done for each user after all events have been parsed
+            Toast toast = Toast.makeText(getActivity().getApplicationContext(), "DEBUG: "+records, Toast.LENGTH_LONG);
             toast.show();
             new LoadViewsInToWeekView().execute(record);
         } catch (Exception e) {
