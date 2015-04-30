@@ -1,3 +1,4 @@
+
 package com.txstatecs4398.coursemate.collections.calendar;
 
 import java.text.SimpleDateFormat;
@@ -194,23 +195,23 @@ public class CalendarFragment extends Fragment {
                 // get netID
                 record+=p.getNetID()+" "; // recordField[0]
                 // get color code
-                record+=colorWheel[temp.returnStorage().indexOf(p) % 10]; // recordField[1]
+                record+=colorWheel[temp.returnStorage().indexOf(p) % 10] + " "; // recordField[1]
                 for(Event e : p.getEvents()){
                     // get day
                     switch(e.getDay().toUpperCase()){ // Apparently we represent days using 1 letter codes
-                        case "M":record="1 ";
+                        case "M":record+="1 ";
                             break;
-                        case "T":record="2 ";
+                        case "T":record+="2 ";
                             break;
-                        case "W":record="3 ";
+                        case "W":record+="3 ";
                             break;
-                        case "R":record="4 ";
+                        case "R":record+="4 ";
                             break;
-                        case "F":record="5 ";
+                        case "F":record+="5 ";
                             break;
-                        case "S":record="6 ";
+                        case "S":record+="6 ";
                             break;
-                        case "U":record="0 ";
+                        case "U":record+="0 ";
                             break;
                         default:
                             Toast toast = Toast.makeText(getActivity().getApplicationContext(), 
