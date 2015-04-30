@@ -54,9 +54,9 @@ public class ShareGroupActivity extends Activity {
     private final ArrayList<Integer> mSelectedItems = new ArrayList();
     private boolean first = true;
     private TextView groupnameView;
-    private FragmentManager fragmentManager = getFragmentManager();
-    private FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-    private CalendarFragment fragment = new CalendarFragment();
+    private final FragmentManager fragmentManager = getFragmentManager();
+    private final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+    private CalendarFragment fragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +65,8 @@ public class ShareGroupActivity extends Activity {
         Bundle extras = getIntent().getExtras();
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
             if (mNfcAdapter == null)finish();
+        new CalendarFragment().temp = groupCollectionMake();
+        fragment = new CalendarFragment();
         
         if (login() && (extras != null)) {
             list = (ListView) findViewById(R.id.list1);
@@ -109,7 +111,6 @@ public class ShareGroupActivity extends Activity {
 
         fragmentTransaction.add(R.id.my_fragment, fragment);
         fragmentTransaction.commit();
-        //fragment.update(groupCollectionMake());//used to update fragment
     }
     
     public Group groupCollectionMake()
@@ -222,11 +223,15 @@ public class ShareGroupActivity extends Activity {
             
             NdefRecord[] records = NFCRecords.toArray(new NdefRecord[NFCRecords.size()]);
             mNdefMessage = new NdefMessage(records);
-            if(!first)
-                mNfcAdapter.enableForegroundNdefPush(this, mNdefMessage);
-            first = false;
             
-            fragment.update(groupCollectionMake());//used to update fragment
+            new CalendarFragment().temp = groupCollectionMake();
+            fragment = new CalendarFragment();//used to update fragment
+            if(!first)
+            {
+                mNfcAdapter.enableForegroundNdefPush(this, mNdefMessage);
+            }
+            first = false;
+           
         } catch (IOException e) {}
     }
 
@@ -315,7 +320,6 @@ public class ShareGroupActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        fragment.update(groupCollectionMake());//used to update fragment
         if (mNfcAdapter != null) {
             mNfcAdapter.enableForegroundNdefPush(this, mNdefMessage);
         }

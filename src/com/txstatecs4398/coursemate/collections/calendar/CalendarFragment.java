@@ -105,6 +105,8 @@ public class CalendarFragment extends Fragment {
     public ArrayList<WeekSets> weekDatas;
     String tapMargin;
     String buttonHeight;
+    
+    public static Group temp;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -186,11 +188,12 @@ public class CalendarFragment extends Fragment {
         } catch (Exception e) {
             Log.getStackTraceString(e);
         }
-
+        update(temp);
     }
 
-    public void update(Group temp) {
-        
+    private void update(Group temp) {
+        textViewSat.setText(CommonMethod.convertWeekDays(NextPreWeekday[6])
+                + "\nSat2");
         try {
             List<String> records = new ArrayList<String>();
             String record="";
