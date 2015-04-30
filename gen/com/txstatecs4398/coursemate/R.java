@@ -36,7 +36,8 @@ public final class R {
         public static final int person_icon=0x7f020010;
         public static final int red_button=0x7f020011;
         public static final int rounded_edittext=0x7f020012;
-        public static final int supercat=0x7f020013;
+        public static final int side_bar=0x7f020013;
+        public static final int supercat=0x7f020014;
     }
     public static final class id {
         public static final int action_add_group=0x7f09004a;

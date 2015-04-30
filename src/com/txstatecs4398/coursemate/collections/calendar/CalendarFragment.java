@@ -188,7 +188,7 @@ public class CalendarFragment extends Fragment {
     private void update() {
         textViewSat.setText(CommonMethod.convertWeekDays(NextPreWeekday[6])
                 + "\nSat"+Integer.toString(new Random().nextInt(100)));
-        try {
+
             List<String> records = new ArrayList<>();
             String record="";
             for(Person p : temp.returnStorage()){
@@ -238,9 +238,6 @@ public class CalendarFragment extends Fragment {
             Toast toast = Toast.makeText(getActivity().getApplicationContext(), "DEBUG: "+records, Toast.LENGTH_LONG);
             toast.show();
             new LoadViewsInToWeekView().execute(record);
-        } catch (Exception e) {
-            Log.getStackTraceString(e);
-        }
     }
 
     public String[] getWeekDay() {
