@@ -41,5 +41,4 @@ C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\ShareGroupActivity$4.class \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\ShareGroupActivity$5.class \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\ShareGroupActivity.class \
-C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\SharePersonActivity$1.class \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\bin\classes\com\txstatecs4398\coursemate\SharePersonActivity.class \

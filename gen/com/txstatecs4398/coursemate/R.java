@@ -47,7 +47,6 @@ public final class R {
         public static final int action_share=0x7f09004b;
         public static final int button1=0x7f09002c;
         public static final int buttonUrl=0x7f090041;
-        public static final int calendar1=0x7f090047;
         public static final int delete=0x7f090034;
         public static final int groupMembers=0x7f09003b;
         public static final int groupName=0x7f090035;
@@ -61,6 +60,7 @@ public final class R {
         public static final int my_fragment=0x7f090044;
         public static final int next=0x7f09003a;
         public static final int password1=0x7f090040;
+        public static final int person_fragment=0x7f090047;
         public static final int progressBar1=0x7f090043;
         public static final int relativeLayout1=0x7f090003;
         public static final int relativeLayout2=0x7f090010;

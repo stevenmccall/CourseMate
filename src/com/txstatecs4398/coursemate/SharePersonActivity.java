@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Window;
-import android.widget.CalendarView;
 import android.widget.TextView;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
+import com.txstatecs4398.coursemate.collections.Group;
+import com.txstatecs4398.coursemate.collections.Person;
+import com.txstatecs4398.coursemate.collections.calendar.CalendarFragment;
 import java.nio.charset.Charset;
 import java.util.Locale;
 import java.io.FileInputStream;
@@ -18,7 +20,6 @@ import java.util.Scanner;
 public class SharePersonActivity extends Activity {
 
     private TextView text1;
-    private CalendarView calendar1;
     private NfcAdapter mNfcAdapter;
     private NdefMessage mNdefMessage;
     private String user;
@@ -29,9 +30,6 @@ public class SharePersonActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.share_person);
-
-        calendar1 = (CalendarView) findViewById(R.id.calendar1);
-        calendar1.setShowWeekNumber(false);
 
         text1 = (TextView) findViewById(R.id.text2);
         text1.setMovementMethod(new ScrollingMovementMethod());
@@ -55,13 +53,12 @@ public class SharePersonActivity extends Activity {
 
         }
 
-        calendar1.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                //check the day of month against a custom class storing schedule availability.
-                //show a dialog with a list view to time frames.
-            }
-        });
+        Person tempPerson = new Person(user);
+        tempPerson.nfcParse(sched);
+        new CalendarFragment().temp = new Group();
+        new CalendarFragment().temp.AddPerson(tempPerson);
+        CalendarFragment fragment = new CalendarFragment();
+        getFragmentManager().beginTransaction().add(R.id.person_fragment, fragment).commit();
     }
     
     public boolean login() 
