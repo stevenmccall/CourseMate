@@ -235,6 +235,8 @@ public class CalendarFragment extends Fragment {
                     
                     // or
                       Integer start = e.getStartTime();   // recordField[%3]
+                      Integer offset = 0;//235;
+                      Double scaleCorrectionFactor = (40.0/30.0);
                     Integer mins = 0;
                     String startProc = start.toString();
                     if(startProc.length()==3)
@@ -246,11 +248,13 @@ public class CalendarFragment extends Fragment {
 //                        mins=30;
 //                    if(mins>=45)
 //                        mins=60;
-                    mins += ((Integer.parseInt(startProc.subSequence(0, 2).toString()))*60);
+                    mins += (((Integer.parseInt(startProc.subSequence(0, 2).toString()))*60)+offset); // + offset correction.
                     //Double proc = mins.doubleValue();
                     //proc /= 30; ///= 50; // 730 -> 14.6  725 -> 14.5  720 -> 14.4
                     //start = (int)Math.round(proc);
+                    mins = (int)((int) mins*scaleCorrectionFactor);
                     record+=mins+" ";
+//                    record+=0+" "; //test
                     // get button end time location
                     Integer end = e.getEndTime();       // recordField[%4]
                     mins = 0;
@@ -264,11 +268,13 @@ public class CalendarFragment extends Fragment {
 //                        mins=30;
 //                    if(mins>=45)
 //                        mins=60;
-                    mins += ((Integer.parseInt(endProc.subSequence(0, 2).toString()))*60);
+                    mins += (((Integer.parseInt(endProc.subSequence(0, 2).toString()))*60)+offset); // + offset correction.
                     //proc = mins.doubleValue();
                     //proc /= 30; ///= 50; // 730 -> 14.6  725 -> 14.5  720 -> 14.4
                     //end = (int)Math.round(proc);
+                    mins = (int)((int) mins*scaleCorrectionFactor);
                     record+=mins+" ";
+//                    record+=160+" "; // seems like 40 per 30 minute interval.
                    // */
                     
                 }
@@ -305,11 +311,11 @@ public class CalendarFragment extends Fragment {
                             String startRef = recordchunk.get((i*3)+1);
                             String endRef = recordchunk.get((i*3)+2);
                             String dayCode = recordchunk.get(i*3);
-                            String netIDwTime = netID+"\n"+(startRef)+" - "+(endRef);
+                            //String netIDwTime = netID+"\n"+(startRef)+" - "+(endRef);
                             tapMargin = startRef;//getWidthAndHeightToButton(Integer.parseInt(startRef));
-                            buttonHeight = getHeightOfButton(Integer.parseInt(startRef), 
-                                    Integer.parseInt(endRef));
-                            weekDatas.add(getWeekValues(dayCode, "12", netIDwTime, colorCode,  // netID and color respectively
+                            buttonHeight = Integer.toString(Integer.parseInt(endRef)-Integer.parseInt(startRef));//getHeightOfButton(Integer.parseInt(startRef), 
+                                    //Integer.parseInt(endRef));
+                            weekDatas.add(getWeekValues(dayCode, "12", netID, colorCode,  // netID and color respectively
                                     tapMargin, buttonHeight));
                         }
                     }
