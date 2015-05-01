@@ -34,11 +34,6 @@ public class HtmlLoaderActivity extends Activity {
         if (extras != null) {
             username = extras.getString("username");
             password = extras.getString("password");
-            
-            if (extras.containsKey("schedule"))//if nfc brought in coursemate schedule
-            {
-                schedule = extras.getString("schedule");
-            }
             password = password.replace("\\", "\\\\"); // corrects \ escape character in passwords
         }
 

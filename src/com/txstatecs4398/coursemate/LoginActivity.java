@@ -67,7 +67,7 @@ public class LoginActivity extends Activity {
                 {
                     intent.putExtra("nfcNetID", nfcNetID.get(0));
                     intent.putExtra("nfcSched", nfcSched.get(0));
-                }//*/
+                }
                 startActivity(intent);
                 finish();
             }

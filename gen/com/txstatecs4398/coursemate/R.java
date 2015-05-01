@@ -40,11 +40,11 @@ public final class R {
         public static final int supercat=0x7f020014;
     }
     public static final class id {
-        public static final int action_add_group=0x7f09004b;
-        public static final int action_add_person=0x7f090049;
-        public static final int action_logout=0x7f09004d;
-        public static final int action_settings=0x7f09004a;
-        public static final int action_share=0x7f09004c;
+        public static final int action_add_group=0x7f09004a;
+        public static final int action_add_person=0x7f090048;
+        public static final int action_logout=0x7f09004c;
+        public static final int action_settings=0x7f090049;
+        public static final int action_share=0x7f09004b;
         public static final int button1=0x7f09002c;
         public static final int buttonUrl=0x7f090041;
         public static final int calendar1=0x7f090047;
@@ -75,7 +75,6 @@ public final class R {
         public static final int relativeLayoutWedDay=0x7f09002f;
         public static final int scrollView1=0x7f09000d;
         public static final int semester=0x7f09003c;
-        public static final int test=0x7f090048;
         public static final int text1=0x7f09003d;
         public static final int text2=0x7f090046;
         public static final int textView10am=0x7f09001b;
@@ -130,7 +129,6 @@ public final class R {
         public static final int progress_layout=0x7f030007;
         public static final int share_group=0x7f030008;
         public static final int share_person=0x7f030009;
-        public static final int test=0x7f03000a;
     }
     public static final class menu {
         public static final int share_group_activity_actions=0x7f080000;

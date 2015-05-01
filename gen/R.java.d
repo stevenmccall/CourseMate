@@ -40,7 +40,6 @@ C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\layout\login.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\layout\progress_layout.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\layout\share_group.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\layout\share_person.xml \
-C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\layout\test.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\menu\share_group_activity_actions.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\menu\share_person_activity_actions.xml \
 C:\Users\Steven\Documents\NetBeansProjects\CourseMate\res\values\colors.xml \

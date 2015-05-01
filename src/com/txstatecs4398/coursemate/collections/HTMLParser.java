@@ -7,7 +7,6 @@ package com.txstatecs4398.coursemate.collections;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 /**
  *
@@ -16,35 +15,42 @@ import java.util.LinkedList;
 public class HTMLParser {
 
     static String strbuf;
-    static int lastIndex, lastIndex2 = 0;
-    static ArrayList<String> classSched = new ArrayList<>();
+    static int lastIndex, lastIndex2;
+    static ArrayList<String> classSched;
     static String findstr = "pm";
-    static String start = null, finish = null, day = null;
+    static String start, finish, day;
     static int startime, endtime;
     static Event tt;
     public Person IndSched;
 
-    static byte[] buffer = new byte[(int) new File("schedule.txt").length()];
-    static BufferedInputStream f = null;
-    static ArrayList<String> schedStep = new ArrayList<>();
-    static ArrayList<String> dayStep = new ArrayList<>();
-    static ArrayList<Integer> startStep = new ArrayList<>();
-    static ArrayList<Integer> finishStep = new ArrayList<>();
+    static byte[] buffer;
+    static BufferedInputStream f;
+    static ArrayList<String> schedStep;
+    static ArrayList<String> dayStep;
+    static ArrayList<Integer> startStep;
+    static ArrayList<Integer> finishStep;
 
     public HTMLParser(String netID) {
-        IndSched = new Person(netID);
-        //this is temp untill steven adds his athetication program+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++       
+        IndSched = new Person(netID); 
     }
-
-    //----------------------------------------------------------------------------- hk added end    
 
     public Person parse(String HTMLStream) throws NullPointerException {
         int pmcount = 0, colcount = 0;
 
         strbuf = HTMLStream;
-		//
-        //search string for times... which are when in class
-        //am</TD> pm</TD>
+        //-------reseting variables-------
+        lastIndex2 = 0;
+        classSched = new ArrayList<>();
+        start = null;
+        finish = null;
+        day = null;
+        buffer = new byte[(int) new File("schedule.txt").length()];
+        f = null;
+        schedStep = new ArrayList<>();
+        dayStep  = new ArrayList<>();        
+        startStep = new ArrayList<>();
+        finishStep = new ArrayList<>();
+        //--------------------------------
 
         int foundIndex = 0;
         String step = null;
