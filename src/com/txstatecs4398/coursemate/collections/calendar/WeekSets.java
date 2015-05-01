@@ -5,7 +5,7 @@ public class WeekSets {
 	public String jobID;
 	public String jobRefID;
 	public String tapMargin;
-	public String buttonHight;
+	public String buttonHeight;
         public String colorCode;
 
 }
