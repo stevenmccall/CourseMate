@@ -13,6 +13,3 @@
 # view AndroidManifest.xml #generated:23
 -keep class com.txstatecs4398.coursemate.SharePersonActivity { <init>(...); }
 
-# view res/layout/share_group.xml #generated:9
--keep class com.txstatecs4398.coursemate.collections.calendar.CalendarFragment { <init>(...); }
-

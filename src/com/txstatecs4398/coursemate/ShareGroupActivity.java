@@ -38,17 +38,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ShareGroupActivity extends Activity {
-    private final Context context = this;    
+
+    private final Context context = this;
     private NfcAdapter mNfcAdapter;
     private NdefMessage mNdefMessage;
-    private final ArrayList<NdefRecord> NFCRecords = new ArrayList();    
+    private final ArrayList<NdefRecord> NFCRecords = new ArrayList();
     private ArrayList<String> userAdded = new ArrayList();
-    private ArrayList<String> schedAdded = new ArrayList();    
+    private ArrayList<String> schedAdded = new ArrayList();
     private final ArrayList<String> user = new ArrayList();
-    private final ArrayList<String> sched = new ArrayList();        
+    private final ArrayList<String> sched = new ArrayList();
     private String groupName = "";
-    private String groupDate = "";    
-    private AlertDialog alertDialog;    
+    private String groupDate = "";
+    private AlertDialog alertDialog;
     private ListView list;
     private PersonCustomListAdapter listAdapter;
     private final ArrayList<Integer> mSelectedItems = new ArrayList();
@@ -62,19 +63,18 @@ public class ShareGroupActivity extends Activity {
         setContentView(R.layout.share_group);
         Bundle extras = getIntent().getExtras();
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
-            if (mNfcAdapter == null)finish();
-        
+        if (mNfcAdapter == null) {
+            finish();
+        }
+
         if (login() && (extras != null)) {
             list = (ListView) findViewById(R.id.list1);
             groupnameView = (TextView) findViewById(R.id.text2);
-            
-            if(extras.size() == 1)
-            {
+
+            if (extras.size() == 1) {
                 groupName = extras.getString("groupName");
                 groupRetriever();//gets all the people in the current group
-            }
-            else
-            {
+            } else {
                 userAdded = extras.getStringArrayList("nfcNetID");
                 schedAdded = extras.getStringArrayList("nfcSched");
                 groupName = userAdded.get(0);
@@ -83,16 +83,17 @@ public class ShareGroupActivity extends Activity {
                 schedAdded.remove(0);
             }
             peopleRetriever();//gets all the people that could be added to the group
-            
+
             groupnameView.setText(groupName);
             listAdapter = new PersonCustomListAdapter(this, userAdded);
             list.setAdapter(listAdapter);
-            list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() 
-            {
+            list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                    if(userAdded.get(position).equals(user.get(0)))return true;
-                    
+                    if (userAdded.get(position).equals(user.get(0))) {
+                        return true;
+                    }
+
                     userAdded.remove(position);
                     schedAdded.remove(position);
                     groupCreate();
@@ -100,22 +101,20 @@ public class ShareGroupActivity extends Activity {
                     return true;
                 }
             });
-            groupCreate();            
+            groupCreate();
         } else {
             finish();
         }
 
         new CalendarFragment().temp = groupCollectionMake();
         fragment = new CalendarFragment();
-        getFragmentManager().beginTransaction().add(R.id.my_fragment, fragment, "current").commit();
+        getFragmentManager().beginTransaction().add(R.id.my_fragment, fragment).commit();
     }
-    
-    public Group groupCollectionMake()
-    {
+
+    public Group groupCollectionMake() {
         Group userGroup = new Group();
-        
-        for(int i = 0; i < userAdded.size(); i++)
-        {
+
+        for (int i = 0; i < userAdded.size(); i++) {
             Person temp = new Person(userAdded.get(i));
             temp.nfcParse(schedAdded.get(i));
             userGroup.AddPerson(temp);
@@ -147,10 +146,8 @@ public class ShareGroupActivity extends Activity {
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        for(int i : mSelectedItems)
-                        {
-                            if(!userAdded.contains(user.get(i)))
-                            {
+                        for (int i : mSelectedItems) {
+                            if (!userAdded.contains(user.get(i))) {
                                 userAdded.add(user.get(i));
                                 schedAdded.add(sched.get(i));
                             }
@@ -168,7 +165,7 @@ public class ShareGroupActivity extends Activity {
 
         alertDialog = alertDialogBuilder.create();
     }
-    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
@@ -194,8 +191,7 @@ public class ShareGroupActivity extends Activity {
         }
     }
 
-    public void groupCreate() 
-    {
+    public void groupCreate() {
         try {
             FileOutputStream fs = openFileOutput("CMG" + groupName, Context.MODE_PRIVATE);
             OutputStreamWriter ow = new OutputStreamWriter(fs);
@@ -217,37 +213,37 @@ public class ShareGroupActivity extends Activity {
 
             writer.flush();
             writer.close();
-            
+
             NdefRecord[] records = NFCRecords.toArray(new NdefRecord[NFCRecords.size()]);
             mNdefMessage = new NdefMessage(records);
-            
-            if(!first)
-            {
-               Intent intent = new Intent(getApplicationContext(), ShareGroupActivity.class);
-               intent.putExtra("groupName", groupName);
-               startActivity(intent);
-                
-               mNfcAdapter.enableForegroundNdefPush(this, mNdefMessage);
+
+            if (!first) {
+                getFragmentManager().beginTransaction().remove(fragment);
+                new CalendarFragment().temp = groupCollectionMake();
+                fragment = new CalendarFragment();
+                getFragmentManager().beginTransaction().add(R.id.my_fragment, fragment).commit();
+
+                mNfcAdapter.enableForegroundNdefPush(this, mNdefMessage);
             }
             first = false;
-           
-        } catch (IOException e) {}
+
+        } catch (IOException e) {
+        }
     }
 
-    public boolean groupRetriever() 
-    {
-        try (FileInputStream file = openFileInput("CMG" + groupName)) 
-        {
+    public boolean groupRetriever() {
+        try (FileInputStream file = openFileInput("CMG" + groupName)) {
             Scanner in = new Scanner(file);
             groupDate = in.nextLine();
 
-            while (in.hasNextLine()) 
-            {
+            while (in.hasNextLine()) {
                 userAdded.add(in.nextLine());
                 schedAdded.add(in.nextLine());
             }
-        } catch (Exception e) {return false;}
-        
+        } catch (Exception e) {
+            return false;
+        }
+
         return true;
     }
 

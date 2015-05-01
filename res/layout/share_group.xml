@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:background="#501213"
-              android:paddingTop="10sp"
-              android:orientation="vertical" >   
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#501213"
+                android:paddingTop="10sp"
+                android:orientation="vertical" >   
     
-    <fragment android:name="com.txstatecs4398.coursemate.collections.calendar.CalendarFragment"
-            android:id="@+id/my_fragment"
-            android:layout_width="fill_parent"
-            android:layout_height="320sp"
-            android:layout_marginLeft="10sp"
-            android:layout_marginRight="10sp"
-            android:layout_marginBottom="10sp"/>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:id="@+id/my_fragment"
+                 android:layout_width="fill_parent"
+                 android:layout_height="320sp" 
+                 android:layout_marginLeft="10sp"
+                 android:layout_marginRight="10sp"
+                 android:layout_marginBottom="10sp"/>
                  
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:id="@+id/header"
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:background="#501213"
-                  android:orientation="horizontal" 
-                  android:layout_alignParentRight="true"
-                  android:paddingLeft="10sp"
-                  android:paddingRight="10sp"
-                  android:paddingBottom="10sp"
-                  android:layout_below="@id/my_fragment">
-            <TextView
-                android:id="@+id/text2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Software Engineering Project"   
-                android:lines="1"         
-                android:layout_alignParentLeft="true"
-            />
-            <ImageView 
-                android:id="@+id/image1"
-                android:contentDescription="NFC"
-                android:src="@drawable/nfc_logo32x32"
-                android:layout_width="40sp"
-                android:layout_height="wrap_content"      
-                android:layout_alignParentRight="true"      
-            /> 
-            <TextView
-                android:id="@+id/text1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tap to Send "   
-                android:lines="1"
-                android:layout_toLeftOf="@id/image1"
-            />      
-            
-        </RelativeLayout>
-        <!--temp size for fragment testing-->
-        <ListView
-            android:id="@+id/list1"
-            android:layout_width="fill_parent"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/header"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#501213"
+                        android:orientation="horizontal" 
+                        android:layout_alignParentRight="true"
+                        android:paddingLeft="10sp"
+                        android:paddingRight="10sp"
+                        android:paddingBottom="10sp"
+                        android:layout_below="@id/my_fragment">
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="10sp"   
-            android:layout_marginRight="10sp"  
-            android:divider="#d9d9d9"
-            android:dividerHeight="1dp"
-            android:listSelector="@drawable/list_row_selector"
-            android:layout_below="@id/header"
-        />        
+            android:text="Software Engineering Project"   
+            android:lines="1"         
+            android:layout_alignParentLeft="true"
+        />
+        <ImageView 
+            android:id="@+id/image1"
+            android:contentDescription="NFC"
+            android:src="@drawable/nfc_logo32x32"
+            android:layout_width="40sp"
+            android:layout_height="wrap_content"      
+            android:layout_alignParentRight="true"      
+        /> 
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tap to Send "   
+            android:lines="1"
+            android:layout_toLeftOf="@id/image1"
+        />      
+            
+    </RelativeLayout>
+    <!--temp size for fragment testing-->
+    <ListView
+        android:id="@+id/list1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10sp"   
+        android:layout_marginRight="10sp"  
+        android:divider="#d9d9d9"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_row_selector"
+        android:layout_below="@id/header"
+    />        
 </RelativeLayout>
