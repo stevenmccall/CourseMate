@@ -1,22 +1,21 @@
 package com.txstatecs4398.coursemate.collections.calendar;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -26,7 +25,11 @@ import com.txstatecs4398.coursemate.R;
 import com.txstatecs4398.coursemate.collections.Event;
 import com.txstatecs4398.coursemate.collections.Group;
 import com.txstatecs4398.coursemate.collections.Person;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class CalendarFragment extends Fragment {
@@ -184,6 +187,12 @@ public class CalendarFragment extends Fragment {
     }
 
     private void update() {
+        //-----------Getting Screen Size-----------------
+        WindowManager wm = (WindowManager) getView().getContext().getSystemService(Context.WINDOW_SERVICE); 
+        Display screen = wm.getDefaultDisplay();  
+        Point size = new Point();
+        screen.getSize(size);
+        //-----------------------------------------------
         List<String> records = new ArrayList<>();
         String record = "";
         for (Person p : temp.returnStorage()) {
@@ -219,7 +228,7 @@ public class CalendarFragment extends Fragment {
                     // set button start time location
                 Integer start = e.getStartTime();   // recordField[%3]
                 Integer offset = 0;//235;
-                Double scaleCorrectionFactor = (80.0 / 30.0);//40/30
+                Double scaleCorrectionFactor = (size.x/540.0);//(80.0 / 30.0);//40/30
                 Integer mins;
                 String startProc = start.toString();
                 if (startProc.length() == 3) {
