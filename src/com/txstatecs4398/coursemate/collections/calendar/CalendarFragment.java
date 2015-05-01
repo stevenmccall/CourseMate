@@ -186,8 +186,7 @@ public class CalendarFragment extends Fragment {
     }
 
     private void update() {
-        textViewSat.setText(CommonMethod.convertWeekDays(NextPreWeekday[6])
-                + "\nSat"+Integer.toString(new Random().nextInt(100)));
+        //+Integer.toString(new Random().nextInt(100)));
 
             List<String> records = new ArrayList<>();
             String record="";
@@ -282,15 +281,15 @@ public class CalendarFragment extends Fragment {
                 record = "";
             }
             
-            Toast toast = Toast.makeText(getActivity().getApplicationContext(), "DEBUG: "+records, Toast.LENGTH_LONG);
-            toast.show();
+//            Toast toast = Toast.makeText(getActivity().getApplicationContext(), "DEBUG: "+records, Toast.LENGTH_LONG);
+//            toast.show();
             //new LoadViewsInToWeekView().execute(records.toString());
             doCalendarWeekBuild(records);
     }
     
      void doCalendarWeekBuild(List<String> params){
-        Toast toast = Toast.makeText(getActivity().getApplicationContext(), "DEBUG doCalendarWeekBuild(): "+params.toString(), Toast.LENGTH_LONG);
-            toast.show();
+//        Toast toast = Toast.makeText(getActivity().getApplicationContext(), "DEBUG doCalendarWeekBuild(): "+params.toString(), Toast.LENGTH_LONG);
+//            toast.show();
           if(params.get(0)!=""){
          weekDatas = new ArrayList<WeekSets>();
               
@@ -312,6 +311,7 @@ public class CalendarFragment extends Fragment {
                             String endRef = recordchunk.get((i*3)+2);
                             String dayCode = recordchunk.get(i*3);
                             //String netIDwTime = netID+"\n"+(startRef)+" - "+(endRef);
+                            netID = netID.trim();
                             tapMargin = startRef;//getWidthAndHeightToButton(Integer.parseInt(startRef));
                             buttonHeight = Integer.toString(Integer.parseInt(endRef)-Integer.parseInt(startRef));//getHeightOfButton(Integer.parseInt(startRef), 
                                     //Integer.parseInt(endRef));
@@ -323,8 +323,8 @@ public class CalendarFragment extends Fragment {
           }
     }
          void doCalendarWeekDisplay(){
-         Toast toast = Toast.makeText(getActivity().getApplicationContext(), "DEBUG doCalendarWeekDisplay(): weekDatas.size()="+String.valueOf(weekDatas.size()), Toast.LENGTH_LONG);
-            toast.show();
+//         Toast toast = Toast.makeText(getActivity().getApplicationContext(), "DEBUG doCalendarWeekDisplay(): weekDatas.size()="+String.valueOf(weekDatas.size()), Toast.LENGTH_LONG);
+//            toast.show();
          try {
 
                 WeekSets weekToDay;
