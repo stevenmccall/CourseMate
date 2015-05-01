@@ -306,7 +306,7 @@ public class CalendarFragment extends Fragment {
                         recordchunk.remove(netID);
                         recordchunk.remove(colorCode);
                         
-                        for(int i=0;i<((recordchunk.size()/3)-1);i++){  
+                        for(int i=0;i<((recordchunk.size()/3));i++){  
                             String startRef = recordchunk.get((i*3)+1);
                             String endRef = recordchunk.get((i*3)+2);
                             String dayCode = recordchunk.get(i*3);
