@@ -38,7 +38,7 @@ public class HTMLParser {
         int pmcount = 0, colcount = 0;
 
         strbuf = HTMLStream;
-        //-------reseting variables-------
+        //-------resetting variables-------
         lastIndex2 = 0;
         classSched = new ArrayList<>();
         start = null;
